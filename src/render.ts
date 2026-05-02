@@ -21,7 +21,7 @@ export function renderScript(): void {
         } else if (obj.skip) {
             classList += "skipped-word ";
         } else {
-            classList += "text-future hover:text-blue-400 ";
+            classList += "text-future ";
         }
         span.className = classList;
 

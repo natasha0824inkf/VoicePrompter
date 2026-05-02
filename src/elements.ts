@@ -14,6 +14,8 @@ export interface Elements {
     paragraphSpacingVal: HTMLElement;
     marginInput: HTMLInputElement;
     marginVal: HTMLElement;
+    dockOpacityInput: HTMLInputElement;
+    dockOpacityVal: HTMLElement;
     activeLinePositionInput: HTMLInputElement;
     activeLinePositionVal: HTMLElement;
     lookaheadWordsInput: HTMLInputElement;
@@ -92,6 +94,8 @@ export function initElements(): void {
         paragraphSpacingVal: document.getElementById('paragraphSpacingVal')!,
         marginInput: document.getElementById('marginInput') as HTMLInputElement,
         marginVal: document.getElementById('marginVal')!,
+        dockOpacityInput: document.getElementById('dockOpacityInput') as HTMLInputElement,
+        dockOpacityVal: document.getElementById('dockOpacityVal')!,
         activeLinePositionInput: document.getElementById('activeLinePositionInput') as HTMLInputElement,
         activeLinePositionVal: document.getElementById('activeLinePositionVal')!,
         lookaheadWordsInput: document.getElementById('lookaheadWordsInput') as HTMLInputElement,

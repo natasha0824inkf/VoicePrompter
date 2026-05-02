@@ -24,7 +24,8 @@ export const state: AppState = {
         smoothAnimations: false,
         highlightActiveWord: true,
         activeLinePosition: 35, // Default to 35% from top
-        lookaheadWords: 5 // Default lookahead
+        lookaheadWords: 5, // Default lookahead
+        dockOpacity: 20 // Default dock opacity
     },
     // Video recording state
     isVideoMode: false,

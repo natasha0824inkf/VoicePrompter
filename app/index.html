@@ -227,7 +227,7 @@
         </div>
 
         <!-- Controls Overlay -->
-        <div class="fixed bottom-8 left-0 right-0 flex justify-center items-center gap-6 z-[9999] isolate pointer-events-none">
+        <div id="mainControlsDock" class="fixed bottom-8 left-0 right-0 flex justify-center items-center gap-6 z-[9999] isolate pointer-events-none transition-opacity duration-300">
 
             <!-- Reset App -->
             <button id="resetAppBtn"
@@ -497,9 +497,19 @@
             <div class="mb-4">
                 <div class="flex justify-between text-sm mb-1">
                     <span class="text-neutral-300">Side Margins</span>
-                    <span id="marginVal" class="text-[#FFBB00] font-mono">0px</span>
+                    <span id="marginVal" class="text-[#FFBB00] font-mono">0%</span>
                 </div>
-                <input id="marginInput" type="range" min="0" max="200" step="10" value="0"
+                <input id="marginInput" type="range" min="0" max="40" step="4" value="0"
+                    class="w-full h-2 bg-neutral-700 rounded-lg appearance-none cursor-pointer">
+            </div>
+
+            <!-- Dock Opacity While Recording -->
+            <div class="mb-4">
+                <div class="flex justify-between text-sm mb-1">
+                    <span class="text-neutral-300">Recording Dock Opacity</span>
+                    <span id="dockOpacityVal" class="text-[#FFBB00] font-mono">20%</span>
+                </div>
+                <input id="dockOpacityInput" type="range" min="0" max="100" step="5" value="20"
                     class="w-full h-2 bg-neutral-700 rounded-lg appearance-none cursor-pointer">
             </div>
 

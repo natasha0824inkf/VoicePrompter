@@ -423,9 +423,20 @@ els.paragraphSpacingInput.addEventListener('input', (e) => {
 els.marginInput.addEventListener('input', (e) => {
     const val = parseInt((e.target as HTMLInputElement).value);
     state.config.margin = val;
-    els.marginVal.textContent = `${val}px`;
-    els.scriptContent.style.paddingLeft = `${val}px`;
-    els.scriptContent.style.paddingRight = `${state.config.margin}px`;
+    els.marginVal.textContent = `${val}%`;
+    els.scriptContent.style.paddingLeft = `${val}%`;
+    els.scriptContent.style.paddingRight = `${val}%`;
+});
+
+// Dock Opacity Slider
+els.dockOpacityInput.addEventListener('input', (e) => {
+    const val = parseInt((e.target as HTMLInputElement).value);
+    state.config.dockOpacity = val;
+    els.dockOpacityVal.textContent = `${val}%`;
+    if (state.isRecording) {
+        const dock = document.getElementById('mainControlsDock');
+        if (dock) dock.style.opacity = (val / 100).toString();
+    }
 });
 
 // Active Line Position Slider
@@ -644,8 +655,11 @@ function initializeUI(): void {
     els.paragraphSpacingVal.textContent = `${state.config.paragraphSpacing}em`;
     els.paragraphSpacingInput.value = state.config.paragraphSpacing.toString();
 
-    els.marginVal.textContent = `${state.config.margin}px`;
+    els.marginVal.textContent = `${state.config.margin}%`;
     els.marginInput.value = state.config.margin.toString();
+
+    els.dockOpacityVal.textContent = `${state.config.dockOpacity}%`;
+    els.dockOpacityInput.value = state.config.dockOpacity.toString();
 
     els.activeLinePositionVal.textContent = `${state.config.activeLinePosition}%`;
     els.activeLinePositionInput.value = state.config.activeLinePosition.toString();

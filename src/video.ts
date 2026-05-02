@@ -61,6 +61,8 @@ export function exitVideoMode(): void {
     els.videoRecordBtn.classList.remove('hidden');
     els.videoStopBtn.classList.add('hidden');
     els.videoRecordingIndicator.classList.add('hidden');
+    const dock = document.getElementById('mainControlsDock');
+    if (dock) { dock.style.opacity = ''; }
 
     (window as any).umami?.track('video-mode-exit');
 }
@@ -134,6 +136,8 @@ export function startRecording(): void {
     els.videoRecordBtn.classList.add('hidden');
     els.videoStopBtn.classList.remove('hidden');
     els.videoRecordingIndicator.classList.remove('hidden');
+    const dock = document.getElementById('mainControlsDock');
+    if (dock) dock.style.opacity = (state.config.dockOpacity / 100).toString();
 
     (window as any).umami?.track('video-record-start');
 }
@@ -148,6 +152,8 @@ export function stopRecording(): void {
     els.videoRecordBtn.classList.remove('hidden');
     els.videoStopBtn.classList.add('hidden');
     els.videoRecordingIndicator.classList.add('hidden');
+    const dock = document.getElementById('mainControlsDock');
+    if (dock) { dock.style.opacity = ''; }
 
     (window as any).umami?.track('video-record-stop');
 }
