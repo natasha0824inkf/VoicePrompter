@@ -63,6 +63,13 @@ export interface Elements {
     screenRotationToggle: HTMLInputElement;
     smoothAnimationsToggle: HTMLInputElement;
     highlightActiveWordToggle: HTMLInputElement;
+    // Font Family
+    fontFamilyBtns: {
+        mono: HTMLElement;
+        sans: HTMLElement;
+        serif: HTMLElement;
+        dyslexic: HTMLElement;
+    };
     // Video Recording
     videoModeBtn: HTMLElement;
     videoPreview: HTMLVideoElement;
@@ -143,6 +150,13 @@ export function initElements(): void {
         screenRotationToggle: document.getElementById('screenRotationToggle') as HTMLInputElement,
         smoothAnimationsToggle: document.getElementById('smoothAnimationsToggle') as HTMLInputElement,
         highlightActiveWordToggle: document.getElementById('highlightActiveWordToggle') as HTMLInputElement,
+        // Font Family
+        fontFamilyBtns: {
+            mono: document.getElementById('fontFamilyMonoBtn')!,
+            sans: document.getElementById('fontFamilySansBtn')!,
+            serif: document.getElementById('fontFamilySerifBtn')!,
+            dyslexic: document.getElementById('fontFamilyDyslexicBtn')!
+        },
         // Video Recording
         videoModeBtn: document.getElementById('videoModeBtn')!,
         videoPreview: document.getElementById('videoPreview') as HTMLVideoElement,

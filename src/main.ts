@@ -372,9 +372,15 @@ els.micButton.addEventListener('click', () => {
     if (state.isListening) {
         (window as any).umami?.track('mic-stop');
         stopListening();
+        // Restore dock opacity
+        const dock = document.getElementById('mainControlsDock');
+        if (dock) dock.style.opacity = '';
     } else {
         (window as any).umami?.track('mic-start');
         startListening();
+        // Fade dock while listening
+        const dock = document.getElementById('mainControlsDock');
+        if (dock) dock.style.opacity = (state.config.dockOpacity / 100).toString();
     }
 });
 
@@ -433,7 +439,8 @@ els.dockOpacityInput.addEventListener('input', (e) => {
     const val = parseInt((e.target as HTMLInputElement).value);
     state.config.dockOpacity = val;
     els.dockOpacityVal.textContent = `${val}%`;
-    if (state.isRecording) {
+    // Apply live preview if the dock is currently faded (mic listening or recording)
+    if (state.isListening || state.isRecording) {
         const dock = document.getElementById('mainControlsDock');
         if (dock) dock.style.opacity = (val / 100).toString();
     }
@@ -601,6 +608,15 @@ els.highlightActiveWordToggle.addEventListener('change', (e) => {
     updateHighlight();
 });
 
+// Font Family Buttons
+(['mono', 'sans', 'serif', 'dyslexic'] as const).forEach(font => {
+    els.fontFamilyBtns[font].addEventListener('click', () => {
+        state.config.fontFamily = font;
+        applySettings();
+        updateFontFamilyButtons();
+    });
+});
+
 // Clear History Button
 els.clearHistoryBtn.addEventListener('click', clearHistory);
 
@@ -701,6 +717,7 @@ function initializeUI(): void {
 
     // Apply all settings to DOM
     applySettings();
+    updateFontFamilyButtons();
 }
 
 function updateAlignmentButtons(): void {
@@ -710,6 +727,19 @@ function updateAlignmentButtons(): void {
         btn.classList.toggle('bg-neutral-500', isActive);
         btn.classList.toggle('text-white', isActive);
         btn.classList.toggle('hover:bg-neutral-600', !isActive);
+    });
+}
+
+function updateFontFamilyButtons(): void {
+    (['mono', 'sans', 'serif', 'dyslexic'] as const).forEach(font => {
+        const btn = els.fontFamilyBtns[font];
+        const isActive = state.config.fontFamily === font;
+        btn.classList.toggle('bg-neutral-700', isActive);
+        btn.classList.toggle('text-white', isActive);
+        btn.classList.toggle('border-[#FFBB00]', isActive);
+        btn.classList.toggle('bg-neutral-800', !isActive);
+        btn.classList.toggle('text-neutral-300', !isActive);
+        btn.classList.toggle('border-neutral-700', !isActive);
     });
 }
 

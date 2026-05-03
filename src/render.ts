@@ -212,6 +212,16 @@ export function applySettings(): void {
     } else {
         els.scriptContent.classList.remove('highlight-active-word');
     }
+
+    // Apply font family to script content
+    const fontMap: Record<string, string> = {
+        mono: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
+        sans: 'ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif',
+        serif: 'ui-serif, Georgia, Cambria, "Times New Roman", Times, serif',
+        dyslexic: '"Comic Sans MS", "Chalkboard SE", "Trebuchet MS", cursive'
+    };
+    const fontStack = fontMap[state.config.fontFamily] ?? fontMap['mono'];
+    els.scriptContent.style.fontFamily = fontStack;
 }
 
 export function updateMicUI(isListening: boolean): void {

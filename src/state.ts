@@ -25,7 +25,8 @@ export const state: AppState = {
         highlightActiveWord: true,
         activeLinePosition: 35, // Default to 35% from top
         lookaheadWords: 5, // Default lookahead
-        dockOpacity: 20 // Default dock opacity
+        dockOpacity: 20, // Default dock opacity
+        fontFamily: 'mono' // Default font: mono, serif, sans, dyslexic
     },
     // Video recording state
     isVideoMode: false,
