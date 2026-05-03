@@ -667,6 +667,7 @@ function initializeUI(): void {
 
     els.lineHeightVal.textContent = `${state.config.lineHeight}x`;
     els.lineHeightInput.value = state.config.lineHeight.toString();
+    els.scriptContent.style.lineHeight = `${state.config.lineHeight}`;
 
     els.paragraphSpacingVal.textContent = `${state.config.paragraphSpacing}em`;
     els.paragraphSpacingInput.value = state.config.paragraphSpacing.toString();

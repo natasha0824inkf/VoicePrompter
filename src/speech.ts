@@ -79,8 +79,9 @@ export function initSpeech(): void {
         // Arc / silent-fail detection: error fires immediately on first start with no results
         if (isFirstStart && !gotResultOnFirstStart) {
             isFirstStart = false;
-            if (e.error === 'not-allowed' || e.error === 'service-not-allowed' || e.error === 'audio-capture') {
-                // These are legitimate permission errors, not compatibility issues — don't show browser warning
+            if (e.error === 'not-allowed' || e.error === 'service-not-allowed' || e.error === 'audio-capture' || e.error === 'aborted') {
+                // These are legitimate errors that don't mean the browser lacks support
+                // 'aborted' happens on Safari iOS when the permission dialog interrupts the first recognition start
             } else {
                 showBrowserWarning();
             }
