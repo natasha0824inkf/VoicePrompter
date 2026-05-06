@@ -21,6 +21,41 @@ const mdFiles = fs.readdirSync(BLOG_DIR)
     .filter(file => file.endsWith('.md'))
     .sort();
 
+// Build a lookup of available slugs (filename without .md) so wiki links can
+// match either "Display Title" or "actual-slug-name"
+const slugify = (s) => s.trim().toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-');
+const availableSlugs = new Set(mdFiles.map(f => f.replace('.md', '')));
+
+// Convert Obsidian-style wiki links to standard markdown before marked() runs.
+// Supports:
+//   [[note]]                 → [note](note.html)
+//   [[note|text]]            → [text](note.html)
+//   [[note#heading]]         → [note](note.html#heading)
+//   [[Some Title]]           → [Some Title](some-title.html)  (slugified)
+//   ![[image.png]]           → <img src="image.png" alt="image.png">
+//   ![[image.png|300]]       → <img src="image.png" alt="image.png" width="300">
+function convertWikiLinks(md) {
+    // Embedded images first (the leading ! distinguishes them from links)
+    md = md.replace(/!\[\[([^\]|]+\.(png|jpg|jpeg|gif|webp|svg))(?:\|([^\]]+))?\]\]/gi,
+        (_match, filename, sizeOrAlt) => {
+            const widthAttr = /^\d+$/.test(sizeOrAlt || '') ? ` width="${sizeOrAlt}"` : '';
+            return `<img src="${filename}" alt="${filename}"${widthAttr}>`;
+        });
+
+    // Note links
+    md = md.replace(/\[\[([^\]|#]+)(?:#([^\]|]+))?(?:\|([^\]]+))?\]\]/g,
+        (_match, target, heading, display) => {
+            const targetTrim = target.trim();
+            // If it matches an existing slug exactly, use as-is; otherwise slugify
+            const slug = availableSlugs.has(targetTrim) ? targetTrim : slugify(targetTrim);
+            const text = (display || targetTrim).trim();
+            const anchor = heading ? `#${slugify(heading)}` : '';
+            return `[${text}](${slug}.html${anchor})`;
+        });
+
+    return md;
+}
+
 const articles = [];
 
 // Process each markdown file
@@ -31,8 +66,11 @@ mdFiles.forEach(file => {
     // Parse frontmatter and content
     const { data: frontmatter, content } = matter(fileContent);
 
+    // Pre-process Obsidian wiki-style links → standard markdown
+    const processedContent = convertWikiLinks(content);
+
     // Convert markdown to HTML
-    let htmlContent = marked(content);
+    let htmlContent = marked(processedContent);
     
     // Convert internal markdown links (.md) to HTML links (.html)
     htmlContent = htmlContent.replace(/href="(\.[^"]*)\.md"/g, 'href="$1.html"');
