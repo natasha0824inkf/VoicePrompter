@@ -390,15 +390,105 @@ els.resetAppBtn.addEventListener('click', resetApp);
 // Restart Script Button
 els.restartScriptBtn.addEventListener('click', restartScript);
 
+const MAC_PROMO_PAIRS = [
+    {
+        line1: "Invisible during screen sharing",
+        line2: "Perfect for ",
+        rotating: ["video calls", "sales demos", "interviews", "podcasts", "webinars"]
+    },
+    {
+        line1: "Invisible on screen recordings",
+        line2: "Perfect for ",
+        rotating: ["Looms", "YouTube videos", "tutorials", "product demos"]
+    },
+    {
+        line1: "Floats on top of other apps",
+        line2: "Allowing perfect eye contact",
+        rotating: []
+    }
+];
+
+let promoInterval: number | null = null;
+let currentPromoPairStatic = '';
+let currentPromoWord = '';
+
+function startPromoAnimation() {
+    if (promoInterval) {
+        window.clearInterval(promoInterval);
+        promoInterval = null;
+    }
+
+    const subtitleEl = document.getElementById('macPromoSubtitle');
+    if (!subtitleEl) return;
+
+    const pair = MAC_PROMO_PAIRS[Math.floor(Math.random() * MAC_PROMO_PAIRS.length)];
+    currentPromoPairStatic = pair.line1;
+
+    if (pair.rotating.length === 0) {
+        currentPromoWord = '';
+        subtitleEl.innerHTML = `<div>${pair.line1}</div><div>${pair.line2}</div>`;
+        return;
+    }
+
+    let currentIndex = 0;
+    currentPromoWord = pair.rotating[currentIndex];
+
+    subtitleEl.innerHTML = `<div>${pair.line1}</div><div class="flex items-center">${pair.line2}<span class="promo-rotating-word inline-block transition-all duration-500 opacity-100 translate-y-0 text-neutral-300 font-medium whitespace-nowrap ml-1">${pair.rotating[currentIndex]}</span></div>`;
+
+    const rotatingEl = subtitleEl.querySelector('.promo-rotating-word') as HTMLElement;
+
+    promoInterval = window.setInterval(() => {
+        rotatingEl.classList.remove('opacity-100', 'translate-y-0');
+        rotatingEl.classList.add('opacity-0', '-translate-y-2');
+
+        setTimeout(() => {
+            if (!document.body.contains(rotatingEl)) return;
+            currentIndex = (currentIndex + 1) % pair.rotating.length;
+            currentPromoWord = pair.rotating[currentIndex];
+            rotatingEl.textContent = pair.rotating[currentIndex];
+
+            rotatingEl.classList.remove('-translate-y-2', 'transition-all', 'duration-500');
+            rotatingEl.classList.add('translate-y-2');
+
+            void rotatingEl.offsetWidth;
+
+            rotatingEl.classList.add('transition-all', 'duration-500');
+            rotatingEl.classList.remove('opacity-0', 'translate-y-2');
+            rotatingEl.classList.add('opacity-100', 'translate-y-0');
+        }, 500);
+
+    }, 2500);
+}
+
+function stopPromoAnimation() {
+    if (promoInterval) {
+        window.clearInterval(promoInterval);
+        promoInterval = null;
+    }
+}
+
 // Toggle Settings
 els.toggleSettingsBtn.addEventListener('click', () => {
     (window as any).umami?.track('settings-toggle');
-    els.settingsPanel.classList.toggle('hidden');
+    const isHidden = els.settingsPanel.classList.toggle('hidden');
+    if (!isHidden) {
+        startPromoAnimation();
+    } else {
+        stopPromoAnimation();
+    }
 });
 
 // Close Settings
 els.closeSettingsBtn.addEventListener('click', () => {
     els.settingsPanel.classList.add('hidden');
+    stopPromoAnimation();
+});
+
+// Mac Promo Card Banner
+els.settingsMacBanner.addEventListener('click', () => {
+    const promoData = currentPromoWord ? `${currentPromoPairStatic} - ${currentPromoWord}` : currentPromoPairStatic;
+    (window as any).umami?.track('settings-banner-mac', { variant: promoData });
+    window.location.href = '/mac/';
 });
 
 // Font Size Slider
@@ -484,6 +574,15 @@ els.bgColorInput.addEventListener('input', (e) => {
         state.config.textAlign = align;
         els.scriptContent.style.textAlign = align;
         updateAlignmentButtons();
+    });
+});
+
+// Text Direction Buttons
+(['ltr', 'rtl'] as const).forEach(dir => {
+    els.dirBtns[dir].addEventListener('click', () => {
+        state.config.textDirection = dir as 'ltr' | 'rtl';
+        applySettings();
+        updateDirectionButtons();
     });
 });
 
@@ -684,8 +783,9 @@ function initializeUI(): void {
     els.lookaheadWordsVal.textContent = `${state.config.lookaheadWords}`;
     els.lookaheadWordsInput.value = state.config.lookaheadWords.toString();
 
-    // Update alignment buttons
+    // Update alignment and direction buttons
     updateAlignmentButtons();
+    updateDirectionButtons();
 
     els.smoothAnimationsToggle.checked = state.config.smoothAnimations;
     els.highlightActiveWordToggle.checked = state.config.highlightActiveWord;
@@ -728,6 +828,19 @@ function updateAlignmentButtons(): void {
         btn.classList.toggle('bg-neutral-500', isActive);
         btn.classList.toggle('text-white', isActive);
         btn.classList.toggle('hover:bg-neutral-600', !isActive);
+    });
+}
+
+function updateDirectionButtons(): void {
+    (['ltr', 'rtl'] as const).forEach(dir => {
+        const btn = els.dirBtns[dir];
+        const isActive = state.config.textDirection === dir;
+        btn.classList.toggle('bg-neutral-700', isActive);
+        btn.classList.toggle('text-white', isActive);
+        btn.classList.toggle('border-[#FFBB00]', isActive);
+        btn.classList.toggle('bg-neutral-800', !isActive);
+        btn.classList.toggle('text-neutral-300', !isActive);
+        btn.classList.toggle('border-neutral-700', !isActive);
     });
 }
 

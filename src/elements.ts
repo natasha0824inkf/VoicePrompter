@@ -41,6 +41,10 @@ export interface Elements {
         center: HTMLElement;
         right: HTMLElement;
     };
+    dirBtns: {
+        ltr: HTMLElement;
+        rtl: HTMLElement;
+    };
     // Buttons
     loadScriptBtn: HTMLElement;
     clearHistoryBtn: HTMLElement;
@@ -57,6 +61,8 @@ export interface Elements {
     // Language Selection
     languageSelectContainer: HTMLElement;
     languageSelectSettingsContainer: HTMLElement;
+    // Mac Promo Card
+    settingsMacBanner: HTMLElement;
     // Toggles
     preserveFormattingToggle: HTMLInputElement;
     voiceCommandToggle: HTMLInputElement;
@@ -129,6 +135,10 @@ export function initElements(): void {
             center: document.getElementById('alignCenterBtn')!,
             right: document.getElementById('alignRightBtn')!
         },
+        dirBtns: {
+            ltr: document.getElementById('dirLtrBtn')!,
+            rtl: document.getElementById('dirRtlBtn')!
+        },
         // Buttons
         loadScriptBtn: document.getElementById('loadScriptBtn')!,
         clearHistoryBtn: document.getElementById('clearHistoryBtn')!,
@@ -145,6 +155,8 @@ export function initElements(): void {
         // Language Selection
         languageSelectContainer: document.getElementById('languageSelectContainer')!,
         languageSelectSettingsContainer: document.getElementById('languageSelectSettingsContainer')!,
+        // Mac Promo Card
+        settingsMacBanner: document.getElementById('settings-mac-banner')!,
         // Toggles
         preserveFormattingToggle: document.getElementById('preserveFormattingToggle') as HTMLInputElement,
         voiceCommandToggle: document.getElementById('voiceCommandToggle') as HTMLInputElement,

@@ -200,6 +200,7 @@ export function applySettings(): void {
 
     els.scriptContent.style.setProperty('--paragraph-spacing', `${state.config.paragraphSpacing}em`);
     els.scriptContent.style.textAlign = state.config.textAlign;
+    els.scriptContent.style.direction = state.config.textDirection;
 
     if (state.config.smoothAnimations) {
         els.scriptContent.classList.add('smooth-animations');
