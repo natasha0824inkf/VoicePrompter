@@ -51,6 +51,10 @@ export function renderScript(): void {
     state.currentIndex = 0;
     advancePastSkipped();
     updateHighlight();
+    
+    setTimeout(() => {
+        scrollToCurrent();
+    }, 50);
 }
 
 export function updateHighlight(): void {

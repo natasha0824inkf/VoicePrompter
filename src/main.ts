@@ -400,28 +400,26 @@ const MAC_PROMO_PAIRS = [
         line1: "Invisible on screen recordings",
         line2: "Perfect for ",
         rotating: ["Looms", "YouTube videos", "tutorials", "product demos"]
-    },
-    {
-        line1: "Floats on top of other apps",
-        line2: "Allowing perfect eye contact",
-        rotating: []
     }
 ];
 
-let promoInterval: number | null = null;
+let promoTimeout: number | null = null;
+let currentPromoPairIndex = 0;
 let currentPromoPairStatic = '';
 let currentPromoWord = '';
 
 function startPromoAnimation() {
-    if (promoInterval) {
-        window.clearInterval(promoInterval);
-        promoInterval = null;
+    if (promoTimeout) {
+        window.clearTimeout(promoTimeout);
+        promoTimeout = null;
     }
 
     const subtitleEl = document.getElementById('macPromoSubtitle');
     if (!subtitleEl) return;
 
-    const pair = MAC_PROMO_PAIRS[Math.floor(Math.random() * MAC_PROMO_PAIRS.length)];
+    const pair = MAC_PROMO_PAIRS[currentPromoPairIndex];
+    currentPromoPairIndex = (currentPromoPairIndex + 1) % MAC_PROMO_PAIRS.length;
+    
     currentPromoPairStatic = pair.line1;
 
     if (pair.rotating.length === 0) {
@@ -433,37 +431,44 @@ function startPromoAnimation() {
     let currentIndex = 0;
     currentPromoWord = pair.rotating[currentIndex];
 
-    subtitleEl.innerHTML = `<div>${pair.line1}</div><div class="flex items-center">${pair.line2}<span class="promo-rotating-word inline-block transition-all duration-500 opacity-100 translate-y-0 text-neutral-300 font-medium whitespace-nowrap ml-1">${pair.rotating[currentIndex]}</span></div>`;
+    subtitleEl.innerHTML = `<div>${pair.line1}</div><div class="flex items-center">${pair.line2}<span class="promo-rotating-word inline-block transition-all duration-500 opacity-100 translate-y-0 text-[#FFBB00] font-medium whitespace-nowrap ml-1">${pair.rotating[currentIndex]}</span></div>`;
 
     const rotatingEl = subtitleEl.querySelector('.promo-rotating-word') as HTMLElement;
 
-    promoInterval = window.setInterval(() => {
-        rotatingEl.classList.remove('opacity-100', 'translate-y-0');
-        rotatingEl.classList.add('opacity-0', '-translate-y-2');
-
-        setTimeout(() => {
+    function animateNextWord() {
+        promoTimeout = window.setTimeout(() => {
             if (!document.body.contains(rotatingEl)) return;
-            currentIndex = (currentIndex + 1) % pair.rotating.length;
-            currentPromoWord = pair.rotating[currentIndex];
-            rotatingEl.textContent = pair.rotating[currentIndex];
 
-            rotatingEl.classList.remove('-translate-y-2', 'transition-all', 'duration-500');
-            rotatingEl.classList.add('translate-y-2');
+            rotatingEl.classList.remove('opacity-100', 'translate-y-0');
+            rotatingEl.classList.add('opacity-0', '-translate-y-2');
 
-            void rotatingEl.offsetWidth;
+            promoTimeout = window.setTimeout(() => {
+                if (!document.body.contains(rotatingEl)) return;
+                currentIndex = (currentIndex + 1) % pair.rotating.length;
+                currentPromoWord = pair.rotating[currentIndex];
+                rotatingEl.textContent = pair.rotating[currentIndex];
 
-            rotatingEl.classList.add('transition-all', 'duration-500');
-            rotatingEl.classList.remove('opacity-0', 'translate-y-2');
-            rotatingEl.classList.add('opacity-100', 'translate-y-0');
-        }, 500);
+                rotatingEl.classList.remove('-translate-y-2', 'transition-all', 'duration-500');
+                rotatingEl.classList.add('translate-y-2');
 
-    }, 2500);
+                void rotatingEl.offsetWidth;
+
+                rotatingEl.classList.add('transition-all', 'duration-500');
+                rotatingEl.classList.remove('opacity-0', 'translate-y-2');
+                rotatingEl.classList.add('opacity-100', 'translate-y-0');
+
+                animateNextWord();
+            }, 500);
+        }, 1500);
+    }
+
+    animateNextWord();
 }
 
 function stopPromoAnimation() {
-    if (promoInterval) {
-        window.clearInterval(promoInterval);
-        promoInterval = null;
+    if (promoTimeout) {
+        window.clearTimeout(promoTimeout);
+        promoTimeout = null;
     }
 }
 
@@ -743,11 +748,21 @@ els.dismissAndroidVideoWarningBtn.addEventListener('click', () => {
 // --- Video Mode Event Listeners ---
 
 // Toggle Video Mode
-els.videoModeBtn.addEventListener('click', () => {
+els.videoModeBtn.addEventListener('click', async () => {
     if (state.isVideoMode) {
         exitVideoMode();
     } else {
-        enterVideoMode();
+        const originalContent = els.videoModeBtn.innerHTML;
+        (els.videoModeBtn as HTMLButtonElement).disabled = true;
+        els.videoModeBtn.innerHTML = `<svg class="animate-spin h-6 w-6 text-neutral-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>`;
+        
+        await enterVideoMode();
+        
+        (els.videoModeBtn as HTMLButtonElement).disabled = false;
+        els.videoModeBtn.innerHTML = originalContent;
     }
 });
 
