@@ -1,5 +1,6 @@
 import { state } from './state';
 import { els } from './elements';
+import { scrollToCurrent } from './render';
 
 export async function enterVideoMode(): Promise<void> {
     try {
@@ -22,6 +23,10 @@ export async function enterVideoMode(): Promise<void> {
 
         // Apply split layout by default
         applyVideoLayout();
+
+        setTimeout(() => {
+            scrollToCurrent();
+        }, 50);
 
         if (/Android/i.test(navigator.userAgent)) {
             els.androidVideoWarning.classList.remove('hidden');
@@ -56,6 +61,10 @@ export function exitVideoMode(): void {
     // Remove layout classes
     els.prompterContainer.classList.remove('video-mode-split', 'video-mode-overlay');
 
+    setTimeout(() => {
+        scrollToCurrent();
+    }, 50);
+
     state.isVideoMode = false;
     state.isRecording = false;
     state.mediaRecorder = null;
@@ -74,6 +83,11 @@ export function exitVideoMode(): void {
 export function toggleVideoLayout(): void {
     state.videoLayoutMode = state.videoLayoutMode === 'split' ? 'overlay' : 'split';
     applyVideoLayout();
+    
+    setTimeout(() => {
+        scrollToCurrent();
+    }, 50);
+
     (window as any).umami?.track('video-layout-toggle', { layout: state.videoLayoutMode });
 }
 

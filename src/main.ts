@@ -760,9 +760,6 @@ els.videoRecordBtn.addEventListener('click', startRecording);
 // Stop Recording
 els.videoStopBtn.addEventListener('click', stopRecording);
 
-// Exit Video Mode
-els.videoExitBtn.addEventListener('click', exitVideoMode);
-
 // --- Initialization ---
 function initializeUI(): void {
     // Set UI values from state

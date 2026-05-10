@@ -135,7 +135,6 @@ export function restartScript(): void {
     advancePastSkipped();
     updateHighlight();
     scrollToCurrent();
-    els.scrollContainer.scrollTop = 0;
 }
 
 export function navigateSentences(direction: 'back' | 'forward', sentenceCount: number): void {

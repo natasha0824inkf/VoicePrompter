@@ -223,7 +223,7 @@ input[type=range]::-moz-range-track {
     flex-direction: column;
 }
 
-.video-mode-split #scrollContainer {
+.video-mode-split #scrollWrapper {
     flex: 1;
     height: auto !important;
     min-height: 0;
@@ -245,7 +245,7 @@ input[type=range]::-moz-range-track {
     z-index: 0;
 }
 
-.video-mode-overlay #scrollContainer {
+.video-mode-overlay #scrollWrapper {
     position: relative;
     z-index: 1;
     height: 50% !important;
@@ -264,7 +264,7 @@ input[type=range]::-moz-range-track {
         flex-direction: row;
     }
 
-    .video-mode-split #scrollContainer {
+    .video-mode-split #scrollWrapper {
         width: 50%;
     }
 

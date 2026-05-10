@@ -86,7 +86,6 @@ export interface Elements {
     videoLayoutToggleBtn: HTMLElement;
     videoRecordBtn: HTMLElement;
     videoStopBtn: HTMLElement;
-    videoExitBtn: HTMLElement;
     videoControls: HTMLElement;
     videoRecordingIndicator: HTMLElement;
 }
@@ -182,7 +181,6 @@ export function initElements(): void {
         videoLayoutToggleBtn: document.getElementById('videoLayoutToggleBtn')!,
         videoRecordBtn: document.getElementById('videoRecordBtn')!,
         videoStopBtn: document.getElementById('videoStopBtn')!,
-        videoExitBtn: document.getElementById('videoExitBtn')!,
         videoControls: document.getElementById('videoControls')!,
         videoRecordingIndicator: document.getElementById('videoRecordingIndicator')!
     };
