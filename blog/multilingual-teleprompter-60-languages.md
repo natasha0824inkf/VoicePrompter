@@ -8,7 +8,7 @@ keywords: ["teleprompter", "video production"]
 
 Let me tell you something that surprised me when I built this.
 
-I tested the language detection in [VoicePrompter for Mac](https://apps.apple.com/pl/app/voiceprompter/id6758573080) by pasting scripts in French and Spanish — languages I don't actually speak. And it worked. The app correctly identified the language, switched the speech recognition engine to match, and scrolled the French or Spanish text while I awkwardly read the phonetics out loud.
+I tested the language detection in [VoicePrompter for Mac](https://apps.apple.com/app/apple-store/id6758573080?pt=128503212&ct=vp-blog&mt=8) by pasting scripts in French and Spanish — languages I don't actually speak. And it worked. The app correctly identified the language, switched the speech recognition engine to match, and scrolled the French or Spanish text while I awkwardly read the phonetics out loud.
 
 I'm Konstantin. And I've personally tested English, Polish, Ukrainian, Russian, French, and Spanish in VoicePrompter. The first four I actually speak. The last two I really don't.
 
@@ -42,7 +42,7 @@ This sounds like a small quality-of-life feature. In a real recording workflow, 
 
 The free [VoicePrompter web app](https://voiceprompter.app) at voiceprompter.app supports 34 languages via the browser's native Web Speech API. This covers all major world languages, and the web app also includes automatic language detection — just paste your script and it detects the language for you. You can also select manually from the settings.
 
-For the full 60+ language support and automatic detection, you need [VoicePrompter for Mac](https://apps.apple.com/pl/app/voiceprompter/id6758573080).
+For the full 60+ language support and automatic detection, you need [VoicePrompter for Mac](https://apps.apple.com/app/apple-store/id6758573080?pt=128503212&ct=vp-blog&mt=8).
 
 ## On-Device = Private
 
@@ -60,7 +60,7 @@ This is more significant for multilingual scripts than it might seem. If you're 
 
 For the free multilingual option: [voiceprompter.app](https://voiceprompter.app) — paste your script, select your language, start talking.
 
-For the full 60+ language, auto-detection, always-on-top Mac experience: [VoicePrompter on the Mac App Store](https://apps.apple.com/pl/app/voiceprompter/id6758573080). $3.99/month or $39.99/year with a free tier including 3 custom scripts.
+For the full 60+ language, auto-detection, always-on-top Mac experience: [VoicePrompter on the Mac App Store](https://apps.apple.com/app/apple-store/id6758573080?pt=128503212&ct=vp-blog&mt=8). $3.99/month or $39.99/year with a free tier including 3 custom scripts.
 
 If you want the full breakdown of the Mac app's features, the [VoicePrompter complete guide](./voiceprompter-complete-guide-2025.md) covers everything in one place.
 

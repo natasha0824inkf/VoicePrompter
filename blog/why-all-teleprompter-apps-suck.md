@@ -47,7 +47,7 @@ After people started using the web app, I realized there was a different but equ
 
 Their pain is slightly different. They don't need mirror mode. They need an app that stays visible to them while being completely invisible to everyone else on the call. They need something that works while they're sharing their screen in Zoom or Google Meet. And they need the scrolling to be reliable enough that they can trust it in a live sales call or recording session.
 
-That's [VoicePrompter for Mac](https://apps.apple.com/pl/app/voiceprompter/id6758573080) — a native macOS app that lives in your menu bar and stays on top of everything, including full-screen apps and slides, while being completely hidden from screen recording and screen sharing software.
+That's [VoicePrompter for Mac](https://apps.apple.com/app/apple-store/id6758573080?pt=128503212&ct=vp-blog&mt=8) — a native macOS app that lives in your menu bar and stays on top of everything, including full-screen apps and slides, while being completely hidden from screen recording and screen sharing software.
 
 It uses Apple's native speech recognition, which is why it works in 60+ languages and happens entirely on your device. The whole app is 2 megabytes. You can leave it running all day.
 

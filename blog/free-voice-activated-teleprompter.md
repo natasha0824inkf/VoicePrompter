@@ -50,7 +50,7 @@ Here's what it does:
 
 ## What It Doesn't Do (And Why That's Fine)
 
-The web app doesn't support quite as many languages as the Mac version (34+ vs 60+), and the voice recognition algorithm isn't as advanced as what I built into the native Mac app. For recording professional demos, webinars, or presentations on a Mac, the [Mac version](https://apps.apple.com/pl/app/voiceprompter/id6758573080) is significantly better.
+The web app doesn't support quite as many languages as the Mac version (34+ vs 60+), and the voice recognition algorithm isn't as advanced as what I built into the native Mac app. For recording professional demos, webinars, or presentations on a Mac, the [Mac version](https://apps.apple.com/app/apple-store/id6758573080?pt=128503212&ct=vp-blog&mt=8) is significantly better.
 
 But for solo creators filming on a phone? The web app is plenty. The recognition is solid. The interface is built for speed — paste a script, go.
 
@@ -80,7 +80,7 @@ A few settings that make a real difference:
 
 ## For Mac Users: The Native Version
 
-If you're a creator who uses a Mac for recording — whether you're recording screencasts, demos, podcasts, or video content — you'll want the [native Mac app](https://apps.apple.com/pl/app/voiceprompter/id6758573080) instead.
+If you're a creator who uses a Mac for recording — whether you're recording screencasts, demos, podcasts, or video content — you'll want the [native Mac app](https://apps.apple.com/app/apple-store/id6758573080?pt=128503212&ct=vp-blog&mt=8) instead.
 
 It has more advanced voice recognition, 60+ language support, the invisible overlay mode for screen sharing, and the always-on-top functionality. I cover all of that in the [best teleprompter app for Mac](./best-teleprompter-app-for-mac.md) article.
 

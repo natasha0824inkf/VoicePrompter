@@ -28,7 +28,7 @@ Look at the lens. The actual small circle of glass on your camera or laptop beze
 
 This is harder than it sounds because looking at the lens feels unnatural — you can't see the other person's face when you're looking at the lens. The trick is to glance at the screen briefly to read social cues, then return your gaze to the lens when you're speaking.
 
-If you're using a teleprompter — which is the single most effective tool for maintaining eye contact during a scripted presentation — position it as close to your camera lens as physically possible. [VoicePrompter for Mac](https://apps.apple.com/pl/app/voiceprompter/id6758573080) is a floating window you can drag to any position on screen, so you can park it directly below your camera. Your eyes point at the script, which is nearly at the camera — the angle difference is minimal and invisible to viewers.
+If you're using a teleprompter — which is the single most effective tool for maintaining eye contact during a scripted presentation — position it as close to your camera lens as physically possible. [VoicePrompter for Mac](https://apps.apple.com/app/apple-store/id6758573080?pt=128503212&ct=vp-blog&mt=8) is a floating window you can drag to any position on screen, so you can park it directly below your camera. Your eyes point at the script, which is nearly at the camera — the angle difference is minimal and invisible to viewers.
 
 ## The Lighting Equation
 

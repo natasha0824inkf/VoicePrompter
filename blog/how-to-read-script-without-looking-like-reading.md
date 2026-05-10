@@ -30,7 +30,7 @@ The goal is to minimize the angle between where your eyes are pointing and where
 
 If you use a teleprompter glass setup (a half-mirror that reflects text while staying transparent), the glass goes directly in front of the lens. That's the gold standard for eye contact. But for most creators, a good software teleprompter positioned correctly gets you 90% of the way there.
 
-On a Mac, [VoicePrompter](https://apps.apple.com/pl/app/voiceprompter/id6758573080) is a floating, always-on-top window that you can position wherever you want — right below your camera, right next to it, wherever your setup requires. It sounds small but it matters enormously.
+On a Mac, [VoicePrompter](https://apps.apple.com/app/apple-store/id6758573080?pt=128503212&ct=vp-blog&mt=8) is a floating, always-on-top window that you can position wherever you want — right below your camera, right next to it, wherever your setup requires. It sounds small but it matters enormously.
 
 ## Fix 2: Slow Down
 

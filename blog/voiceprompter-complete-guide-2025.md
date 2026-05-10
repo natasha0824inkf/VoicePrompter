@@ -6,7 +6,7 @@ image: "https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format
 keywords: ["teleprompter", "video production"]
 ---
 
-VoicePrompter is a voice-activated teleprompter available in two versions: a free open-source web app at [voiceprompter.app](https://voiceprompter.app), and a native macOS app on the [Mac App Store](https://apps.apple.com/pl/app/voiceprompter/id6758573080). This guide covers both.
+VoicePrompter is a voice-activated teleprompter available in two versions: a free open-source web app at [voiceprompter.app](https://voiceprompter.app), and a native macOS app on the [Mac App Store](https://apps.apple.com/app/apple-store/id6758573080?pt=128503212&ct=vp-blog&mt=8). This guide covers both.
 
 ## Why VoicePrompter Exists
 
@@ -99,11 +99,11 @@ Professionals who record demos, webinars, tutorials, podcasts, product videos, o
 
 - $3.99/month or $39.99/year
 - Free tier: 3 custom scripts + unlimited demo script
-- Available in 175 countries via the [Mac App Store](https://apps.apple.com/pl/app/voiceprompter/id6758573080)
+- Available in 175 countries via the [Mac App Store](https://apps.apple.com/app/apple-store/id6758573080?pt=128503212&ct=vp-blog&mt=8)
 
 ### How to Get Started
 
-1. Install from the [Mac App Store](https://apps.apple.com/pl/app/voiceprompter/id6758573080).
+1. Install from the [Mac App Store](https://apps.apple.com/app/apple-store/id6758573080?pt=128503212&ct=vp-blog&mt=8).
 2. The app appears in your menu bar on first launch.
 3. Copy a script to your clipboard.
 4. Click the menu bar icon → "Paste from Clipboard."

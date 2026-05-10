@@ -45,7 +45,7 @@ Repeat. The eye movement becomes a rhythm. The transitions get faster. Eventuall
 
 Most teleprompter apps either auto-scroll at a fixed speed or let you control the speed manually. Both have problems: fixed speed doesn't match your natural variations in pace, and manual speed requires cognitive bandwidth you'd rather spend on delivery.
 
-Voice-activated scrolling solves this. [VoicePrompter](https://voiceprompter.app) (free web app) and [VoicePrompter for Mac](https://apps.apple.com/pl/app/voiceprompter/id6758573080) both use real-time speech recognition to scroll the text at your natural speaking pace. The text follows you, not the other way around.
+Voice-activated scrolling solves this. [VoicePrompter](https://voiceprompter.app) (free web app) and [VoicePrompter for Mac](https://apps.apple.com/app/apple-store/id6758573080?pt=128503212&ct=vp-blog&mt=8) both use real-time speech recognition to scroll the text at your natural speaking pace. The text follows you, not the other way around.
 
 This is especially liberating for the phrase-grab technique because there's no pressure to "keep up" or "stay ahead" of the scroll. You can grab a phrase, look at the camera, take a brief pause for emphasis, and the text is still there waiting for you.
 

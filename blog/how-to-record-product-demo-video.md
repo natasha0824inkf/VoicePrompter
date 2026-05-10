@@ -44,7 +44,7 @@ A teleprompter doesn't just reduce takes. It changes the quality of your deliver
 
 When you know your script is there and reliable, you stop trying to hold everything in your head. That cognitive load — "what was the next point, did I forget to mention the integration, how do I say this precisely?" — disappears. You can focus entirely on delivery: pace, tone, energy, eye contact.
 
-The key is using a teleprompter that works correctly. [VoicePrompter for Mac](https://apps.apple.com/pl/app/voiceprompter/id6758573080) is what I use. It's an always-on-top, transparent overlay that follows your speech automatically using Apple's on-device voice recognition. You talk, it scrolls. You pause, it waits.
+The key is using a teleprompter that works correctly. [VoicePrompter for Mac](https://apps.apple.com/app/apple-store/id6758573080?pt=128503212&ct=vp-blog&mt=8) is what I use. It's an always-on-top, transparent overlay that follows your speech automatically using Apple's on-device voice recognition. You talk, it scrolls. You pause, it waits.
 
 Crucially: it's completely invisible in screen recordings and screen shares. If you're recording a demo where you're also sharing your screen or your Mac display, your teleprompter doesn't appear in the recording. Your screen shows the product. Your face shows you. Nobody sees the script.
 

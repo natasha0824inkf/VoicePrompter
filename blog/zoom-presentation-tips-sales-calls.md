@@ -38,7 +38,7 @@ The actual solution: a teleprompter overlay that sits on top of your screen, vis
 
 ## Using VoicePrompter for Sales Calls
 
-[VoicePrompter for Mac](https://apps.apple.com/pl/app/voiceprompter/id6758573080) is a transparent, always-on-top window. You put it right next to the Zoom video grid — or directly under your camera — and it shows your script, following your voice as you speak.
+[VoicePrompter for Mac](https://apps.apple.com/app/apple-store/id6758573080?pt=128503212&ct=vp-blog&mt=8) is a transparent, always-on-top window. You put it right next to the Zoom video grid — or directly under your camera — and it shows your script, following your voice as you speak.
 
 Here's why this works especially well for sales calls:
 

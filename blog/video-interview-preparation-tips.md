@@ -28,7 +28,7 @@ Here's where most interview advice gets timid. They say "use notes but don't rea
 
 The right approach: use a teleprompter so that your notes are in front of you, follow your pace, and let you read them while looking at the camera — without the viewer being able to tell you're reading.
 
-For a recorded video interview on a Mac, [VoicePrompter for Mac](https://apps.apple.com/pl/app/voiceprompter/id6758573080) is the cleanest setup. It's a transparent, always-on-top overlay. Position it right below your camera, set the font large enough to read comfortably, start the voice recognition, and deliver your answer.
+For a recorded video interview on a Mac, [VoicePrompter for Mac](https://apps.apple.com/app/apple-store/id6758573080?pt=128503212&ct=vp-blog&mt=8) is the cleanest setup. It's a transparent, always-on-top overlay. Position it right below your camera, set the font large enough to read comfortably, start the voice recognition, and deliver your answer.
 
 The scroll follows your voice. When you pause to think, the text pauses with you. You're not racing to keep up with auto-scroll. You're not manually swiping at a critical moment. The script is there exactly when you need it.
 

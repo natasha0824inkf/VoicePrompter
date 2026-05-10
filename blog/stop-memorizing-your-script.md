@@ -42,7 +42,7 @@ If you've ever noticed that your best takes are usually the first or second one 
 
 [VoicePrompter](https://voiceprompter.app) is a free voice-activated teleprompter that works on any device via browser. You paste your script, it scrolls as you speak, pauses when you pause. No account, no sign-up. Just go to [voiceprompter.app](https://voiceprompter.app).
 
-If you're recording on a Mac — demos, webinars, tutorials, presentations, sales calls — the [VoicePrompter Mac app](https://apps.apple.com/pl/app/voiceprompter/id6758573080) adds the always-on-top and screen-capture-invisible features that make it work in professional settings. It's $3.99/month with a free tier.
+If you're recording on a Mac — demos, webinars, tutorials, presentations, sales calls — the [VoicePrompter Mac app](https://apps.apple.com/app/apple-store/id6758573080?pt=128503212&ct=vp-blog&mt=8) adds the always-on-top and screen-capture-invisible features that make it work in professional settings. It's $3.99/month with a free tier.
 
 ## "But Won't I Sound Like I'm Reading?"
 

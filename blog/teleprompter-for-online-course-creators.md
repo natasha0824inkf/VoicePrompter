@@ -52,7 +52,7 @@ Without a script, you're improvising narration while clicking through an interfa
 
 With a teleprompter overlay — especially one that sits on top of other apps and is invisible to screen recording software — you can read your narration while performing the screen actions. The viewer sees a clean screen recording with professional narration. You see the screen plus your script floating in a small, translucent window.
 
-[VoicePrompter's Mac app](https://apps.apple.com/pl/app/voiceprompter/id6758573080) does exactly this. It overlays on top of any application, including full-screen apps, and doesn't appear in screen recordings or screen shares. For course creators doing software tutorials, this is a genuinely different workflow — you go from "I'll record the screen first and narrate later" (which doubles your production time) to "I'll do both at once."
+[VoicePrompter's Mac app](https://apps.apple.com/app/apple-store/id6758573080?pt=128503212&ct=vp-blog&mt=8) does exactly this. It overlays on top of any application, including full-screen apps, and doesn't appear in screen recordings or screen shares. For course creators doing software tutorials, this is a genuinely different workflow — you go from "I'll record the screen first and narrate later" (which doubles your production time) to "I'll do both at once."
 
 ## Handling Multiple Languages
 

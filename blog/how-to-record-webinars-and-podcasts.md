@@ -28,7 +28,7 @@ For a podcast, script the intro (who you are, what the episode is about, why it 
 
 Once you have a script — even a partial one — you need a way to reference it without reading obviously from a piece of paper or glancing constantly at a second screen.
 
-The best solution I've found: [VoicePrompter for Mac](https://apps.apple.com/pl/app/voiceprompter/id6758573080). It's a transparent always-on-top overlay that follows your speech using Apple's on-device voice recognition. Position it below your camera, start recording, and read naturally.
+The best solution I've found: [VoicePrompter for Mac](https://apps.apple.com/app/apple-store/id6758573080?pt=128503212&ct=vp-blog&mt=8). It's a transparent always-on-top overlay that follows your speech using Apple's on-device voice recognition. Position it below your camera, start recording, and read naturally.
 
 For a webinar where you're screen-sharing, this is especially useful because the teleprompter window is invisible to participants and screen recordings. They see your slides; they see your face; they don't see the script.
 

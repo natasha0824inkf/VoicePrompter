@@ -40,7 +40,7 @@ The scripted sections are what separates a tutorial that teaches from a tutorial
 
 For the scripted parts, use a teleprompter. Full stop.
 
-[VoicePrompter for Mac](https://apps.apple.com/pl/app/voiceprompter/id6758573080) is what I use. It's an always-on-top transparent overlay — you can see it while screen recording, but it doesn't appear in the recording itself. So for a tutorial where you're sharing your screen, your teleprompter sits on top of your browser or application, readable to you, invisible to viewers.
+[VoicePrompter for Mac](https://apps.apple.com/app/apple-store/id6758573080?pt=128503212&ct=vp-blog&mt=8) is what I use. It's an always-on-top transparent overlay — you can see it while screen recording, but it doesn't appear in the recording itself. So for a tutorial where you're sharing your screen, your teleprompter sits on top of your browser or application, readable to you, invisible to viewers.
 
 Voice-activated scrolling means it follows your pace. When you switch into live demonstration mode ("now I'll click here..."), you stop talking to the script and the scroll pauses. When you transition back to your scripted narration, it's right where you left off.
 

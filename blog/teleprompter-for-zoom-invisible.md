@@ -16,7 +16,7 @@ Here's what I mean. Most teleprompter software runs as a regular window on your 
 
 ## What "Invisible" Actually Means
 
-[VoicePrompter for Mac](https://apps.apple.com/pl/app/voiceprompter/id6758573080) solves this with a specific macOS capability: the app window is excluded from screen capture entirely.
+[VoicePrompter for Mac](https://apps.apple.com/app/apple-store/id6758573080?pt=128503212&ct=vp-blog&mt=8) solves this with a specific macOS capability: the app window is excluded from screen capture entirely.
 
 What that means in practice: the overlay is visible to you — it's sitting right there on your screen, floating over your Zoom window, your slides, everything. But from the perspective of your camera, your screen recording, and your Zoom participants, it simply doesn't exist. The screen share shows your slides or desktop. The video shows you looking directly ahead. Nobody sees the script.
 
@@ -70,7 +70,7 @@ I wrote more specifically about each of these in [how to record product demos](.
 
 ## Getting Started
 
-The app is on the Mac App Store: [VoicePrompter for Mac](https://apps.apple.com/pl/app/voiceprompter/id6758573080). It's $3.99/month or $39.99/year, with a free tier that includes unlimited use of the demo script and up to 3 custom scripts. If you want to test before committing, that's more than enough to run it through a real call.
+The app is on the Mac App Store: [VoicePrompter for Mac](https://apps.apple.com/app/apple-store/id6758573080?pt=128503212&ct=vp-blog&mt=8). It's $3.99/month or $39.99/year, with a free tier that includes unlimited use of the demo script and up to 3 custom scripts. If you want to test before committing, that's more than enough to run it through a real call.
 
 The setup is minimal. Install, open, paste your script from clipboard, resize and position the window, start the voice recognition. That's it. The app lives in your menu bar so you can access it anytime without cluttering your dock.
 

@@ -8,7 +8,7 @@ keywords: ["teleprompter", "video production"]
 
 I've tried a lot of Mac teleprompter apps. More than I'd like to admit. Before I built my own, I spent a genuinely embarrassing amount of time testing everything I could find on the App Store and beyond.
 
-This is not a sponsored roundup. I'm not going to pretend I use five different apps simultaneously. I'm going to tell you what the options actually are, what they're good for, what they're missing, and where [VoicePrompter for Mac](https://apps.apple.com/pl/app/voiceprompter/id6758573080) sits in that landscape.
+This is not a sponsored roundup. I'm not going to pretend I use five different apps simultaneously. I'm going to tell you what the options actually are, what they're good for, what they're missing, and where [VoicePrompter for Mac](https://apps.apple.com/app/apple-store/id6758573080?pt=128503212&ct=vp-blog&mt=8) sits in that landscape.
 
 ## What Makes a Good Mac Teleprompter
 
@@ -28,7 +28,7 @@ Before comparing anything, let me be specific about what actually matters for a 
 
 This is the one I built. I'm biased — obviously — but I can also tell you exactly what it does.
 
-[VoicePrompter for Mac](https://apps.apple.com/pl/app/voiceprompter/id6758573080) is a native macOS app that runs as a menu bar app. The window is a transparent overlay that:
+[VoicePrompter for Mac](https://apps.apple.com/app/apple-store/id6758573080?pt=128503212&ct=vp-blog&mt=8) is a native macOS app that runs as a menu bar app. The window is a transparent overlay that:
 
 - Stays on top of all apps and all full-screen modes
 - Is completely invisible in Zoom, Teams, Google Meet, OBS, and QuickTime screen recordings
@@ -64,7 +64,7 @@ The web app doesn't have the always-on-top functionality or the screen-capture-i
 
 ## Which One Should You Use
 
-If you record demos, webinars, tutorials, online presentations, podcasts, or do sales calls over video — and you do any of these on a Mac — you want [VoicePrompter for Mac](https://apps.apple.com/pl/app/voiceprompter/id6758573080). The combination of invisible overlay and always-on-top with reliable voice scrolling is the specific set of features that solves the actual problem.
+If you record demos, webinars, tutorials, online presentations, podcasts, or do sales calls over video — and you do any of these on a Mac — you want [VoicePrompter for Mac](https://apps.apple.com/app/apple-store/id6758573080?pt=128503212&ct=vp-blog&mt=8). The combination of invisible overlay and always-on-top with reliable voice scrolling is the specific set of features that solves the actual problem.
 
 If you only film yourself with a camera (not screen recording), and you want a completely free solution, the web app at [voiceprompter.app](https://voiceprompter.app) is excellent and costs nothing.
 

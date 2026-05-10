@@ -32,7 +32,7 @@ On a virtual call, looking at your slides means looking away from the camera. An
 
 Separate your slides from your script. Your slides should support what you're saying visually. Your script should be somewhere else — somewhere you can read it while looking directly at the camera.
 
-This is where a teleprompter overlay changes the game entirely. With a tool like [VoicePrompter's Mac app](https://apps.apple.com/pl/app/voiceprompter/id6758573080), your script floats in a small translucent window right next to your camera lens. You read the script while maintaining eye contact. Your slides advance separately — either on a timer, with a clicker, or through your presentation software. The audience sees a speaker who seems to know their material perfectly and never breaks eye contact. What they don't see is the script floating two inches from the lens.
+This is where a teleprompter overlay changes the game entirely. With a tool like [VoicePrompter's Mac app](https://apps.apple.com/app/apple-store/id6758573080?pt=128503212&ct=vp-blog&mt=8), your script floats in a small translucent window right next to your camera lens. You read the script while maintaining eye contact. Your slides advance separately — either on a timer, with a clicker, or through your presentation software. The audience sees a speaker who seems to know their material perfectly and never breaks eye contact. What they don't see is the script floating two inches from the lens.
 
 Because the overlay is invisible to screen sharing and recording, it doesn't appear in the Zoom call or any recording of the session. From the audience's perspective, you're just an unusually polished speaker.
 
