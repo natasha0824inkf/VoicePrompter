@@ -53,7 +53,7 @@
             --pill: 100px;
             --font-serif: 'DM Serif Display', Georgia, serif;
             --font-sans: 'DM Sans', 'Segoe UI', sans-serif;
-            --section-pad: 120px;
+            --section-pad: 100px;
         }
 
         html {
@@ -142,7 +142,7 @@
 
         /* ───────────────────────── Hero ───────────────────────── */
         .hero {
-            padding: var(--section-pad) 0 80px;
+            padding: 60px 0 60px;
             text-align: center;
         }
 
@@ -224,6 +224,19 @@
         .hero-meta span {
             margin: 0 6px;
             opacity: 0.4;
+        }
+
+        .hero-trust {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-top: 12px;
+        }
+
+        .hero-trust .stat-number {
+            font-weight: 700;
+            font-size: 15px;
+            color: var(--pop);
+            font-variant-numeric: tabular-nums;
         }
 
         /* Hero image */
@@ -317,7 +330,7 @@
 
         /* ───────────────────────── Feature Showcase Tiles ───────────────────────── */
         .feature-showcase {
-            padding: 0 0 var(--section-pad);
+            padding: var(--section-pad) 0;
         }
 
         .feature-showcase h2 {
@@ -325,7 +338,22 @@
             font-size: 42px;
             text-align: center;
             color: var(--accent);
-            margin-bottom: 56px;
+            margin-bottom: 24px;
+        }
+
+        .showcase-sub {
+            font-size: 18px;
+            color: var(--text-light);
+            max-width: 680px;
+            margin: 0 auto 56px;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        .showcase-sub a {
+            color: var(--pop);
+            text-decoration: underline;
+            text-underline-offset: 4px;
         }
 
         .showcase-grid {
@@ -363,6 +391,20 @@
             height: 100%;
             object-fit: cover;
             display: block;
+            filter: brightness(0.7);
+            transition: filter 0.5s ease;
+        }
+
+        .showcase-tile:hover .showcase-tile-media video,
+        .showcase-tile:hover .showcase-tile-media img {
+            filter: brightness(1);
+        }
+
+        @media (max-width: 1024px) {
+            .showcase-tile.in-view .showcase-tile-media video,
+            .showcase-tile.in-view .showcase-tile-media img {
+                filter: brightness(1);
+            }
         }
 
         .showcase-tile-info {
@@ -381,6 +423,76 @@
             font-size: 15px;
             color: var(--text-light);
             line-height: 1.55;
+        }
+
+        /* ───────────────────────── Audience ───────────────────────── */
+        .audience {
+            padding: 40px 0 140px;
+            text-align: center;
+        }
+
+        .audience h2 {
+            font-family: var(--font-serif);
+            font-size: 42px;
+            color: var(--accent);
+            margin-bottom: 24px;
+        }
+
+        .audience-sub {
+            font-size: 18px;
+            color: var(--text-light);
+            max-width: 680px;
+            margin: 0 auto 56px;
+            line-height: 1.6;
+        }
+
+        .audience-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            text-align: left;
+            max-width: 920px;
+            margin: 0 auto;
+        }
+
+        .audience-item {
+            display: flex;
+            gap: 16px;
+            background: var(--surface);
+            padding: 24px;
+            border-radius: var(--radius);
+            border: 1px solid var(--surface-border);
+            transition: transform 0.3s ease;
+        }
+
+        .audience-item:hover {
+            transform: translateY(-2px);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .audience-icon {
+            color: var(--pop);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .audience-item p {
+            font-size: 15px;
+            color: var(--text-light);
+            line-height: 1.5;
+        }
+
+        .audience-item strong {
+            color: var(--accent);
+            display: block;
+            margin-bottom: 4px;
+            font-size: 16px;
+        }
+
+        @media (max-width: 768px) {
+            .audience-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         /* ───────────────────────── Video ───────────────────────── */
@@ -669,7 +781,7 @@
 
         /* ───────────────────────── Reviews ───────────────────────── */
         .reviews {
-            padding: calc(var(--section-pad) / 2) 0 var(--section-pad);
+            padding: var(--section-pad) 0;
         }
 
         .reviews h2 {
@@ -1162,9 +1274,8 @@
 
     <!-- ═══════════════════════ Hero ═══════════════════════ -->
     <section class="hero container fade-up" id="hero">
-        <h1>Your script. Invisible to everyone but you.</h1>
-        <p class="hero-sub">A floating teleprompter that follows your voice and hides from screen share — so you
-            sound natural on every call.</p>
+        <h1>The most convenient teleprompter for Mac</h1>
+        <p class="hero-sub">A floating window that follows your voice, stays on top of every app, and disappears completely during screen sharing and recordings.</p>
 
         <div class="hero-ctas">
             <a href="https://apps.apple.com/app/apple-store/id6758573080?pt=128503212&ct=mac-landing-hero&mt=8"
@@ -1172,80 +1283,80 @@
                 <img src="/Download_on_the_Mac_App_Store_Badge_US-UK_RGB_wht_092917.svg"
                     alt="Download on the Mac App Store" style="height:48px;">
             </a>
-            <a href="#video" class="btn-ghost" data-umami-event="mac-hero-watch-video">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <polygon points="5 3 19 12 5 21 5 3" />
-                </svg>
-                Watch the video
-            </a>
         </div>
 
         <p class="hero-meta">
             $3.34/mo<span>·</span>Free to try<span>·</span>Mac App Store<span>·</span>175 countries
         </p>
+        <p class="hero-trust">
+            Trusted by <span class="stat-number">220+</span> creators worldwide
+        </p>
 
         <div class="hero-image">
-            <img src="/mac-screenshot.png" alt="VoicePrompter floating over a Zoom call"
-                style="width:100%;border-radius:14px;box-shadow:0 24px 64px rgba(0,0,0,0.4);">
+            <div class="video-wrapper" style="box-shadow: 0 24px 64px rgba(0,0,0,0.4); border-radius: 14px; overflow: hidden;">
+                <div class="video-responsive">
+                    <iframe src="https://www.youtube.com/embed/2PYq2wI-HWk" title="VoicePrompter for Mac"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen loading="lazy"></iframe>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- ═══════════════════════ Problem ═══════════════════════ -->
-    <section class="problem container fade-up">
-        <p>Memorizing scripts kills your energy. Reading from notes kills your eye contact. There's a better way.</p>
-    </section>
-
-    <!-- ═══════════════════════ Features ═══════════════════════ -->
-    <section class="features container fade-up">
-        <div class="features-grid">
-
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                        <line x1="1" y1="1" x2="23" y2="23" />
-                    </svg>
+    <!-- ═══════════════════════ Who is this for ═══════════════════════ -->
+    <section class="audience container fade-up">
+        <h2>Who is this for?</h2>
+        <p class="audience-sub">VoicePrompter is built for anyone on a Mac who speaks on camera or on calls and wants their script in front of them without anyone else knowing it's there.</p>
+        
+        <div class="audience-grid">
+            <div class="audience-item">
+                <div class="audience-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
                 </div>
-                <h3>Invisible on screen share</h3>
-                <p>Hidden from Zoom, Teams, and recordings. Only you see the script — your audience sees nothing.</p>
+                <p><strong>Sales reps</strong> who need talking points visible on calls without the client ever seeing them</p>
             </div>
-
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" />
-                        <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
-                        <line x1="12" y1="19" x2="12" y2="23" />
-                        <line x1="8" y1="23" x2="16" y2="23" />
-                    </svg>
+            
+            <div class="audience-item">
+                <div class="audience-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
                 </div>
-                <h3>Follows your voice</h3>
-                <p>Scrolls when you speak, pauses when you stop. No foot pedal, no tapping, no clicker needed.</p>
+                <p><strong>YouTubers and course creators</strong> who want to read a script while looking directly into the camera</p>
             </div>
-
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
-                        <line x1="8" y1="21" x2="16" y2="21" />
-                        <line x1="12" y1="17" x2="12" y2="21" />
-                    </svg>
+            
+            <div class="audience-item">
+                <div class="audience-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
                 </div>
-                <h3>Works everywhere</h3>
-                <p>Stays on top of full-screen slides, OBS, any app. Your prompter never gets buried behind
-                    windows.</p>
+                <p><strong>Webinar hosts</strong> who need to stay on track without losing their place</p>
             </div>
-
+            
+            <div class="audience-item">
+                <div class="audience-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
+                </div>
+                <p><strong>Podcasters</strong> recording scripted intros, ad reads, or structured interviews</p>
+            </div>
+            
+            <div class="audience-item">
+                <div class="audience-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                </div>
+                <p><strong>Non-native speakers</strong> who want to present in another language with confidence</p>
+            </div>
+            
+            <div class="audience-item">
+                <div class="audience-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                </div>
+                <p><strong>Demo recorders</strong> who want to nail every take without starting over</p>
+            </div>
         </div>
-    </section>
+
 
     <!-- ═══════════════════════ Feature Showcase ═══════════════════════ -->
     <section class="feature-showcase container fade-up" id="showcase">
-        <h2>See every feature in action</h2>
+        <h2>VoicePrompter's features in action</h2>
+        <p class="showcase-sub">The app has many more thoughtful features - and if something is still missing, request it <a href="https://docs.google.com/forms/d/e/1FAIpQLSd0K6qLz_vxvZf7jld3SNJ-MZUburp5cw8ts8d4azv1saRp0Q/viewform?usp=header" target="_blank" rel="noopener">here</a>.</p>
 
         <div class="showcase-grid">
 
@@ -1257,38 +1368,38 @@
                     </video>
                 </div>
                 <div class="showcase-tile-info">
-                    <h3>Invisible on screen share</h3>
-                    <p>Hidden from Zoom, Teams, and every recording app. Only you see the script.</p>
+                    <h3>Invisible to others</h3>
+                    <p>Hidden from Zoom, Teams, Google meet and every recording app. Only you see the script.</p>
                 </div>
             </div>
 
-            <!-- Tile 2 — Languages -->
+            <!-- Tile 2 — Voice Scrolling -->
             <div class="showcase-tile">
                 <div class="showcase-tile-media">
                     <video autoplay loop muted playsinline>
-                        <source src="/videos/7-languages.mp4" type="video/mp4">
+                        <source src="/videos/3-voice-scrolling.mp4" type="video/mp4">
                     </video>
                 </div>
                 <div class="showcase-tile-info">
-                    <h3>Multiple languages</h3>
-                    <p>Works in English, Spanish, French, German, and dozens more — out of the box.</p>
+                    <h3>Voice scrolling</h3>
+                    <p>Reads along as you speak pauses when you pause. No clicker needed. Uses on-device speech recognition.</p>
                 </div>
             </div>
 
-            <!-- Tile 3 — Audio Source -->
+            <!-- Tile 3 — Always on Top -->
             <div class="showcase-tile">
                 <div class="showcase-tile-media">
                     <video autoplay loop muted playsinline>
-                        <source src="/videos/6-asudio-source.mp4" type="video/mp4">
+                        <source src="/videos/2-floating.mp4" type="video/mp4">
                     </video>
                 </div>
                 <div class="showcase-tile-info">
-                    <h3>Audio source selection</h3>
-                    <p>Pick any mic — AirPods, USB, built-in — and switch on the fly.</p>
+                    <h3>Always on top</h3>
+                    <p>Floats above every window including full screen applications - so your script is always available at a glance.</p>
                 </div>
             </div>
 
-            <!-- Tile 4 — Transparent window -->
+            <!-- Tile 4 — Transparent Window -->
             <div class="showcase-tile">
                 <div class="showcase-tile-media">
                     <video autoplay loop muted playsinline>
@@ -1301,7 +1412,20 @@
                 </div>
             </div>
 
-            <!-- Tile 5 — Follow mouse cursor -->
+            <!-- Tile 5 — Languages -->
+            <div class="showcase-tile">
+                <div class="showcase-tile-media">
+                    <video autoplay loop muted playsinline>
+                        <source src="/videos/7-languages.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="showcase-tile-info">
+                    <h3>Supports 60+ languages</h3>
+                    <p>Works in English, Spanish, French, German, and dozens more - out of the box.</p>
+                </div>
+            </div>
+
+            <!-- Tile 6 — Follows Your Cursor -->
             <div class="showcase-tile">
                 <div class="showcase-tile-media">
                     <video autoplay loop muted playsinline>
@@ -1310,48 +1434,77 @@
                 </div>
                 <div class="showcase-tile-info">
                     <h3>Follows your cursor</h3>
-                    <p>The prompter window snaps to your mouse so the script is always where you look.</p>
-                </div>
-            </div>
-
-            <!-- Tile 6 — Voice-scrolling -->
-            <div class="showcase-tile">
-                <div class="showcase-tile-media">
-                    <video autoplay loop muted playsinline>
-                        <source src="/videos/3-voice-scrolling.mp4" type="video/mp4">
-                    </video>
-                </div>
-                <div class="showcase-tile-info">
-                    <h3>Voice-activated scrolling</h3>
-                    <p>Reads along as you speak — pauses when you pause. No clicker needed.</p>
-                </div>
-            </div>
-
-            <!-- Tile 7 — Floating -->
-            <div class="showcase-tile">
-                <div class="showcase-tile-media">
-                    <video autoplay loop muted playsinline>
-                        <source src="/videos/2-floating.mp4" type="video/mp4">
-                    </video>
-                </div>
-                <div class="showcase-tile-info">
-                    <h3>Always on top</h3>
-                    <p>Floats above every window — slides, OBS, browser — so your script is never buried.</p>
+                    <p>The prompter window can snap to your mouse so the script is always where you look.</p>
                 </div>
             </div>
 
         </div>
     </section>
 
-    <!-- ═══════════════════════ Video ═══════════════════════ -->
-    <section class="video-section container fade-up" id="video">
-        <h2>See it in action</h2>
-        <div class="video-wrapper">
-            <div class="video-responsive">
-                <iframe src="https://www.youtube.com/embed/2PYq2wI-HWk" title="VoicePrompter for Mac"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen loading="lazy"></iframe>
+
+
+    <!-- ═══════════════════════ Reviews ═══════════════════════ -->
+    <section class="reviews container fade-up">
+        <h2>What users are saying</h2>
+
+        <div class="reviews-grid">
+
+            <!-- Card 1 — App Store -->
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar" style="background: linear-gradient(135deg, #6366F1, #8B5CF6);">J</div>
+                    <span class="review-name">justlr.</span>
+                    <div class="review-platform">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">"This app really helps me on my sales calls. Instead of having my talking points
+                    on a sticky note, I now have them on my screen and they stay visible only to me even when I share my
+                    screen."</p>
             </div>
+
+            <!-- Card 2 — Instagram DM -->
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar" style="background: linear-gradient(135deg, #E1306C, #F77737);">PB</div>
+                    <span class="review-name">Philipp Berezin</span>
+                    <div class="review-platform">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">"The way everything functions feels clean and simple to use. And so far there
+                    isn't a proper alternative that delivers this kind of smooth experience. I'm about to start my own
+                    podcast... thank you for building something that actually solves a REAL problem."</p>
+            </div>
+
+            <!-- Card 3 — App Store -->
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar" style="background: linear-gradient(135deg, #10B981, #059669);">J</div>
+                    <span class="review-name">Junk .</span>
+                    <div class="review-platform">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">"The app works great. I was surprised that it recognizes my English so well. I am
+                    not a native English speaker and do have an accent, but it still keeps up. I record a lot of product
+                    demos and it already saved me time :)"</p>
+            </div>
+
         </div>
     </section>
 
@@ -1395,69 +1548,7 @@
         </p>
     </section>
 
-    <!-- ═══════════════════════ Reviews ═══════════════════════ -->
-    <section class="reviews container fade-up">
-        <h2>What users are saying</h2>
 
-        <div class="reviews-grid">
-
-            <!-- Card 1 — App Store -->
-            <div class="review-card">
-                <div class="review-header">
-                    <div class="review-avatar" style="background: linear-gradient(135deg, #6366F1, #8B5CF6);">J</div>
-                    <span class="review-name">justlr.</span>
-                    <div class="review-platform">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path
-                                d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
-                        </svg>
-                    </div>
-                </div>
-                <div class="review-stars">★★★★★</div>
-                <p class="review-text">"This app really helps me on my sales calls. Instead of having my talking points
-                    on a sticky note, I now have them on my screen and they stay visible only to me even when I share my
-                    screen."</p>
-            </div>
-
-            <!-- Card 2 — Instagram DM -->
-            <div class="review-card">
-                <div class="review-header">
-                    <div class="review-avatar" style="background: linear-gradient(135deg, #E1306C, #F77737);">PB</div>
-                    <span class="review-name">Philipp Berezin</span>
-                    <div class="review-platform">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-                        </svg>
-                    </div>
-                </div>
-                <p class="review-text">"The way everything functions feels clean and simple to use. And so far there
-                    isn't a proper alternative that delivers this kind of smooth experience. I'm about to start my own
-                    podcast... thank you for building something that actually solves a REAL problem."</p>
-            </div>
-
-            <!-- Card 3 — App Store -->
-            <div class="review-card">
-                <div class="review-header">
-                    <div class="review-avatar" style="background: linear-gradient(135deg, #10B981, #059669);">J</div>
-                    <span class="review-name">Junk .</span>
-                    <div class="review-platform">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path
-                                d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
-                        </svg>
-                    </div>
-                </div>
-                <div class="review-stars">★★★★★</div>
-                <p class="review-text">"The app works great. I was surprised that it recognizes my English so well. I am
-                    not a native English speaker and do have an accent, but it still keeps up. I record a lot of product
-                    demos and it already saved me time :)"</p>
-            </div>
-
-        </div>
-    </section>
 
     <!-- ═══════════════════════ FAQ ═══════════════════════ -->
     <section class="faq container fade-up" id="faq">
@@ -1602,16 +1693,33 @@
     <!-- ═══════════════════════ Scroll Reveal ═══════════════════════ -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const observer = new IntersectionObserver((entries) => {
+            // General scroll reveal
+            const revealObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
-                        observer.unobserve(entry.target);
+                        revealObserver.unobserve(entry.target);
                     }
                 });
             }, { threshold: 0.12 });
 
-            document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+            document.querySelectorAll('.fade-up').forEach(el => revealObserver.observe(el));
+
+            // Video brightness toggle for mobile/viewport
+            const brightnessObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                    } else {
+                        entry.target.classList.remove('in-view');
+                    }
+                });
+            }, { 
+                threshold: 0.6,
+                rootMargin: '-5% 0px -5% 0px' 
+            });
+
+            document.querySelectorAll('.showcase-tile').forEach(el => brightnessObserver.observe(el));
         });
     </script>
 
