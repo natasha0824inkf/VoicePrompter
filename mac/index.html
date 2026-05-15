@@ -23,7 +23,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Serif+Display&display=swap"
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Serif+Display&family=Roboto+Flex:opsz,wght@8..144,400;8..144,500;8..144,600;8..144,700&display=swap"
         rel="stylesheet">
 
     <!-- Umami Analytics -->
@@ -49,11 +49,11 @@
             --accent: #F5F0EB;
             --pop: #FFBB00;
             --shadow: 0 2px 24px rgba(0, 0, 0, 0.35);
-            --radius: 18px;
+            --radius: 12px;
             --pill: 100px;
             --font-serif: 'DM Serif Display', Georgia, serif;
             --font-sans: 'DM Sans', 'Segoe UI', sans-serif;
-            --section-pad: 100px;
+            --section-pad: 140px;
         }
 
         html {
@@ -98,18 +98,15 @@
         .container {
             max-width: 1120px;
             margin: 0 auto;
-            padding: 0 32px;
+            padding-left: 32px;
+            padding-right: 32px;
         }
 
-        .fade-up {
-            opacity: 0;
-            transform: translateY(28px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
+        .fade-up,
         .fade-up.visible {
             opacity: 1;
-            transform: translateY(0);
+            transform: none;
+            transition: none;
         }
 
         /* ───────────────────────── Nav ───────────────────────── */
@@ -123,10 +120,18 @@
         }
 
         .nav-logo {
-            font-family: var(--font-serif);
+            display: inline-flex;
+            align-items: center;
+            font-family: 'Google Sans Flex', 'Roboto Flex', 'DM Sans', system-ui, sans-serif;
             font-size: 22px;
+            font-weight: 500;
             color: var(--accent);
             letter-spacing: -0.02em;
+        }
+
+        .nav-logo img {
+            position: relative;
+            top: -1px;
         }
 
         .nav-link {
@@ -140,9 +145,18 @@
             color: var(--accent);
         }
 
+        /* ───────────── Unified section spacing ─────────────
+           Every section gets the same gap from the previous one
+           via a sibling selector. No section sets its own top or
+           bottom padding for inter-section spacing. */
+        section + section,
+        section + footer {
+            padding-top: var(--section-pad);
+        }
+
         /* ───────────────────────── Hero ───────────────────────── */
         .hero {
-            padding: 60px 0 60px;
+            padding: 60px 0 0;
             text-align: center;
         }
 
@@ -241,7 +255,7 @@
 
         /* Hero image */
         .hero-image {
-            margin: 64px auto 32px;
+            margin: 64px auto 16px;
             max-width: 780px;
             position: relative;
         }
@@ -330,7 +344,6 @@
 
         /* ───────────────────────── Feature Showcase Tiles ───────────────────────── */
         .feature-showcase {
-            padding: var(--section-pad) 0;
         }
 
         .feature-showcase h2 {
@@ -338,7 +351,7 @@
             font-size: 42px;
             text-align: center;
             color: var(--accent);
-            margin-bottom: 24px;
+            margin-bottom: 14px;
         }
 
         .showcase-sub {
@@ -427,7 +440,6 @@
 
         /* ───────────────────────── Audience ───────────────────────── */
         .audience {
-            padding: 40px 0 140px;
             text-align: center;
         }
 
@@ -435,7 +447,7 @@
             font-family: var(--font-serif);
             font-size: 42px;
             color: var(--accent);
-            margin-bottom: 24px;
+            margin-bottom: 14px;
         }
 
         .audience-sub {
@@ -449,7 +461,7 @@
         .audience-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 32px;
+            gap: 20px;
             text-align: left;
             max-width: 920px;
             margin: 0 auto;
@@ -493,11 +505,17 @@
             .audience-grid {
                 grid-template-columns: 1fr;
             }
+
+            .audience h2 {
+                font-size: 28px;
+            }
+        }
+
+        @media (max-width: 480px) {
         }
 
         /* ───────────────────────── Video ───────────────────────── */
         .video-section {
-            padding: 0 0 var(--section-pad);
             text-align: center;
         }
 
@@ -534,7 +552,6 @@
 
         /* ───────────────────────── Pricing ───────────────────────── */
         .pricing {
-            padding: var(--section-pad) 0;
         }
 
         .pricing h2 {
@@ -651,7 +668,6 @@
 
         /* ───────────────────────── FAQ ───────────────────────── */
         .faq {
-            padding: var(--section-pad) 0;
             max-width: 800px;
             margin: 0 auto;
         }
@@ -747,9 +763,11 @@
 
         /* ───────────────────────── Footer CTA ───────────────────────── */
         .footer-cta {
-            padding: var(--section-pad) 0;
+            padding-bottom: var(--section-pad);
             text-align: center;
         }
+        /* footer-cta is the last section; keep its bottom pad
+           so there's breathing room before the dark footer. */
 
         .footer-cta h2 {
             font-family: var(--font-serif);
@@ -781,7 +799,6 @@
 
         /* ───────────────────────── Reviews ───────────────────────── */
         .reviews {
-            padding: var(--section-pad) 0;
         }
 
         .reviews h2 {
@@ -952,11 +969,12 @@
         /* ═══════════════════════ Responsive ═══════════════════════ */
         @media (max-width: 768px) {
             :root {
-                --section-pad: 96px;
+                --section-pad: 110px;
             }
 
             .container {
-                padding: 0 24px;
+                padding-left: 24px;
+                padding-right: 24px;
             }
 
             .nav {
@@ -965,12 +983,8 @@
                 padding: 24px;
             }
 
-            .hero {
-                padding-bottom: 64px;
-            }
-
             .hero h1 {
-                font-size: 38px;
+                font-size: 40px;
             }
 
             .hero-sub {
@@ -978,8 +992,7 @@
             }
 
             .hero-image {
-                margin: 48px auto 40px;
-                padding: 0 16px;
+                margin: 48px auto 16px;
             }
 
             .hero-image-placeholder {
@@ -1000,23 +1013,21 @@
                 font-size: 26px;
             }
 
-            .features {
-                padding-top: 32px;
-                padding-bottom: 96px;
-            }
-
             .features-grid {
                 grid-template-columns: 1fr;
                 gap: 32px;
             }
 
-            .feature-showcase {
-                padding-bottom: 96px;
+            .feature-showcase h2,
+            .audience h2 {
+                font-size: 28px;
+                margin-bottom: 8px;
             }
 
-            .feature-showcase h2 {
-                font-size: 34px;
-                margin-bottom: 40px;
+            .audience-sub,
+            .showcase-sub {
+                font-size: 15px;
+                margin-bottom: 32px;
             }
 
             .showcase-grid {
@@ -1024,23 +1035,13 @@
                 gap: 24px;
             }
 
-            .video-section {
-                padding-top: 0;
-                padding-bottom: 96px;
-            }
-
             .video-section h2 {
-                font-size: 32px;
+                font-size: 28px;
                 margin-bottom: 32px;
             }
 
-            .pricing {
-                padding-top: 0;
-                padding-bottom: 96px;
-            }
-
             .pricing h2 {
-                font-size: 34px;
+                font-size: 28px;
                 margin-bottom: 40px;
             }
 
@@ -1049,13 +1050,8 @@
                 gap: 24px;
             }
 
-            .reviews {
-                padding-top: 48px;
-                padding-bottom: 96px;
-            }
-
             .reviews h2 {
-                font-size: 34px;
+                font-size: 28px;
                 margin-bottom: 40px;
             }
 
@@ -1064,13 +1060,8 @@
                 gap: 24px;
             }
 
-            .faq {
-                padding-top: 48px;
-                padding-bottom: 96px;
-            }
-
             .faq h2 {
-                font-size: 34px;
+                font-size: 28px;
                 margin-bottom: 40px;
             }
 
@@ -1084,13 +1075,8 @@
                 font-size: 14px;
             }
 
-            .footer-cta {
-                padding-top: 72px;
-                padding-bottom: 112px;
-            }
-
             .footer-cta h2 {
-                font-size: 32px;
+                font-size: 28px;
                 margin-bottom: 32px;
             }
 
@@ -1126,7 +1112,8 @@
             }
 
             .container {
-                padding: 0 24px;
+                padding-left: 24px;
+                padding-right: 24px;
             }
 
             .nav {
@@ -1138,11 +1125,11 @@
             }
 
             .hero-sub {
-                font-size: 17px;
+                font-size: 16px;
             }
 
             .hero-image {
-                margin: 40px auto 32px;
+                margin: 40px auto 16px;
             }
 
             .problem {
@@ -1171,18 +1158,16 @@
                 font-size: 16px;
             }
 
-            .feature-showcase {
-                padding-bottom: 80px;
+            .feature-showcase h2,
+            .audience h2 {
+                font-size: 26px;
+                margin-bottom: 8px;
             }
 
-            .feature-showcase h2 {
-                font-size: 32px;
-                margin-bottom: 32px;
-            }
-
-            .video-section {
-                padding-top: 0;
-                padding-bottom: 80px;
+            .audience-sub,
+            .showcase-sub {
+                font-size: 14px;
+                margin-bottom: 28px;
             }
 
             .video-wrapper {
@@ -1190,19 +1175,17 @@
             }
 
             .video-section h2 {
-                font-size: 30px;
+                font-size: 26px;
                 margin-bottom: 24px;
             }
 
-
-
             .pricing h2 {
-                font-size: 32px;
+                font-size: 26px;
                 margin-bottom: 32px;
             }
 
             .reviews h2 {
-                font-size: 32px;
+                font-size: 26px;
                 margin-bottom: 32px;
             }
 
@@ -1223,23 +1206,13 @@
                 padding: 10px 0;
             }
 
-            .faq {
-                padding-top: 32px;
-                padding-bottom: 80px;
-            }
-
             .faq h2 {
-                font-size: 32px;
+                font-size: 26px;
                 margin-bottom: 32px;
             }
 
-            .footer-cta {
-                padding-top: 64px;
-                padding-bottom: 96px;
-            }
-
             .footer-cta h2 {
-                font-size: 30px;
+                font-size: 26px;
                 margin-bottom: 28px;
             }
 
@@ -1285,15 +1258,12 @@
             </a>
         </div>
 
-        <p class="hero-meta">
-            $3.34/mo<span>·</span>Free to try<span>·</span>Mac App Store<span>·</span>175 countries
-        </p>
         <p class="hero-trust">
             Trusted by <span class="stat-number">220+</span> creators worldwide
         </p>
 
         <div class="hero-image">
-            <div class="video-wrapper" style="box-shadow: 0 24px 64px rgba(0,0,0,0.4); border-radius: 14px; overflow: hidden;">
+            <div class="video-wrapper" style="box-shadow: 0 24px 64px rgba(0,0,0,0.4); border-radius: 10px; overflow: hidden;">
                 <div class="video-responsive">
                     <iframe src="https://www.youtube.com/embed/2PYq2wI-HWk" title="VoicePrompter for Mac"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -1351,6 +1321,7 @@
                 <p><strong>Demo recorders</strong> who want to nail every take without starting over</p>
             </div>
         </div>
+    </section>
 
 
     <!-- ═══════════════════════ Feature Showcase ═══════════════════════ -->
@@ -1634,7 +1605,7 @@
             </details>
         </div>
         <div class="faq-more">
-            <button class="faq-more-btn" onclick="document.querySelector('.faq-list').classList.add('expanded'); this.style.display='none';">Show more FAQs</button>
+            <button class="faq-more-btn" onclick="(() => { const list = document.querySelector('.faq-list'); const expanded = list.classList.toggle('expanded'); this.textContent = expanded ? 'Show fewer FAQs' : 'Show more FAQs'; if (!expanded) document.getElementById('faq').scrollIntoView({ behavior: 'smooth', block: 'start' }); })()">Show more FAQs</button>
         </div>
     </section>
 
