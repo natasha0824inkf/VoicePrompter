@@ -4,9 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "node scripts/build-use-cases.js && vite",
     "build:blog": "node scripts/build-blog.js",
-    "build": "npm run build:blog && tsc && vite build",
+    "build:use-cases": "node scripts/build-use-cases.js",
+    "build": "npm run build:blog && npm run build:use-cases && tsc && vite build",
     "preview": "vite preview"
   },
   "devDependencies": {

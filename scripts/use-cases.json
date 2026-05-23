@@ -1,0 +1,391 @@
+[
+  {
+    "slug": "mac",
+    "name": "Mac",
+    "platformName": "FaceTime, Zoom, and Teams",
+    "isRootMac": true,
+    "logo": "/logo-icon-no-bg.svg",
+    "badgeText": "Native macOS App",
+    "metaTitle": "The Best Teleprompter for Mac — VoicePrompter",
+    "metaDescription": "A floating teleprompter window for Mac that follows your voice, stays on top of full-screen apps, and is invisible during screen sharing.",
+    "canonicalUrl": "https://voiceprompter.app/mac/",
+    "eyebrow": "VoicePrompter for macOS",
+    "heroTitle": "The most convenient teleprompter for Mac",
+    "heroSubtitle": "A floating window that follows your voice, stays on top of every app, and disappears completely during screen sharing and recordings.",
+    "heroVideoEmbed": "<div class=\"video-responsive\"><iframe src=\"https://www.youtube.com/embed/2PYq2wI-HWk\" title=\"VoicePrompter for Mac\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen loading=\"lazy\"></iframe></div>",
+    "footerCtaHeadline": "Ready to stop memorizing?",
+    "hideSections": [],
+    "audienceItems": [
+      {
+        "icon": "users",
+        "title": "Sales reps",
+        "description": "who need talking points visible on calls without the client ever seeing them"
+      },
+      {
+        "icon": "video",
+        "title": "YouTubers and course creators",
+        "description": "who want to read a script while looking directly into the camera"
+      },
+      {
+        "icon": "book",
+        "title": "Webinar hosts",
+        "description": "who need to stay on track without losing their place"
+      },
+      {
+        "icon": "mic",
+        "title": "Podcasters",
+        "description": "recording scripted intros, ad reads, or structured interviews"
+      },
+      {
+        "icon": "globe",
+        "title": "Non-native speakers",
+        "description": "who want to present in another language with confidence"
+      },
+      {
+        "icon": "monitor",
+        "title": "Demo recorders",
+        "description": "who want to nail every take without starting over"
+      }
+    ]
+  },
+  {
+    "slug": "google-meet",
+    "name": "Google Meet",
+    "platformName": "Google Meet",
+    "logo": "/logos/google-meet.svg",
+    "badgeText": "Seamless Google Meet Integration",
+    "metaTitle": "The Best Teleprompter for Google Meet — VoicePrompter",
+    "metaDescription": "Read your script naturally on Google Meet. An invisible, voice-activated floating teleprompter window that follows your voice and stays hidden from other participants.",
+    "canonicalUrl": "https://voiceprompter.app/mac/google-meet/",
+    "eyebrow": "Google Meet Integration",
+    "heroTitle": "The best teleprompter for Google Meet",
+    "heroSubtitle": "Read your script naturally during Google Meet calls. Hidden from other participants, and follows your voice in real time.",
+    "heroVideoEmbed": "<div class=\"video-responsive\"><iframe src=\"https://www.youtube.com/embed/hflxTHcTDpE\" title=\"VoicePrompter for Google Meet\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen loading=\"lazy\"></iframe></div>",
+    "footerCtaHeadline": "Ready to feel great on Google Meet?",
+    "hideSections": [],
+    "audienceItems": [
+      {
+        "icon": "briefcase",
+        "title": "Sales reps",
+        "description": "running Google Meet product demos with talking points always in view"
+      },
+      {
+        "icon": "users",
+        "title": "Remote teams",
+        "description": "giving presentations to clients or leadership on Google Meet"
+      },
+      {
+        "icon": "clipboard",
+        "title": "Recruiters and HR professionals",
+        "description": "conducting structured interviews or performance reviews over Meet"
+      },
+      {
+        "icon": "book",
+        "title": "Educators",
+        "description": "hosting live online lessons or webinars through Google Meet"
+      },
+      {
+        "icon": "globe",
+        "title": "Non-native speakers",
+        "description": "presenting confidently in another language on Google Meet calls"
+      },
+      {
+        "icon": "star",
+        "title": "Executives and managers",
+        "description": "giving polished team briefings or all-hands sessions on Google Meet"
+      }
+    ],
+    "faqOverrides": {
+      "screen-sharing": {
+        "q": "Will the teleprompter window show up on Google Meet screen sharing?",
+        "a": "No. VoicePrompter uses macOS system-level exclusions. When sharing your screen or browser window on Google Meet, the prompter window remains completely invisible to other participants."
+      }
+    },
+    "extraFaqs": [
+      {
+        "q": "Do I need to install a Google Meet browser extension?",
+        "a": "No. VoicePrompter is a native macOS app. It runs completely independently, so you don't need to install any Chrome extensions, Safari add-ons, or modify your browser settings to use it with Google Meet."
+      },
+      {
+        "q": "Can other Google Meet participants tell I am reading a script?",
+        "a": "No. Since you can drag and resize the transparent VoicePrompter window directly next to or below your Mac's webcam, your eye line remains completely natural. Other participants will see you looking directly at them while you read."
+      },
+      {
+        "q": "How to use a teleprompter with Google Meet?",
+        "a": "Using VoicePrompter with Google Meet is simple: 1. Launch VoicePrompter on your Mac. 2. Load your script. 3. Position the transparent prompter window directly next to your webcam. 4. Share your screen or browser window in Google Meet—the prompter is automatically excluded and invisible to other participants. 5. Speak naturally, and the prompter will scroll in sync with your voice."
+      }
+    ]
+  },
+  {
+    "slug": "zoom",
+    "name": "Zoom",
+    "platformName": "Zoom",
+    "logo": "/logos/zoom.svg",
+    "badgeText": "Seamless Zoom Integration",
+    "metaTitle": "The Best Teleprompter for Zoom Meetings — VoicePrompter",
+    "metaDescription": "The professional voice-activated teleprompter for Zoom. Float your script over Zoom windows, scroll automatically as you speak, and keep it 100% invisible on screen shares.",
+    "canonicalUrl": "https://voiceprompter.app/mac/zoom/",
+    "eyebrow": "Zoom Integration",
+    "heroTitle": "The best teleprompter for Zoom meetings",
+    "heroSubtitle": "Read your notes naturally during Zoom presentations. Floating window stays on top, scrolls automatically as you speak, and is hidden on screen shares.",
+    "heroVideoEmbed": "<div class=\"video-responsive\"><iframe src=\"https://www.youtube.com/embed/2PYq2wI-HWk\" title=\"VoicePrompter for Zoom\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen loading=\"lazy\"></iframe></div>",
+    "footerCtaHeadline": "Ready to nail your next Zoom call?",
+    "hideSections": [],
+    "audienceItems": [
+      {
+        "icon": "briefcase",
+        "title": "Sales professionals",
+        "description": "hosting Zoom demos and pitches with key points always visible"
+      },
+      {
+        "icon": "book",
+        "title": "Webinar hosts",
+        "description": "delivering structured Zoom presentations without losing their place"
+      },
+      {
+        "icon": "users",
+        "title": "Product managers",
+        "description": "presenting roadmaps and updates on Zoom calls with confidence"
+      },
+      {
+        "icon": "mic",
+        "title": "Conference speakers",
+        "description": "delivering keynotes and talks via Zoom Webinars and Events"
+      },
+      {
+        "icon": "globe",
+        "title": "Non-native speakers",
+        "description": "giving Zoom presentations in a second language without anxiety"
+      },
+      {
+        "icon": "star",
+        "title": "Customer success managers",
+        "description": "running scripted Zoom onboarding and training calls"
+      }
+    ],
+    "faqOverrides": {
+      "screen-sharing": {
+        "q": "Will the teleprompter window show up to other Zoom participants?",
+        "a": "No. When sharing your screen or a specific window in Zoom, the VoicePrompter window is automatically hidden at the system level. Other participants will only see your slides or screen, not the script."
+      }
+    },
+    "extraFaqs": [
+      {
+        "q": "Do I need to authorize VoicePrompter in the Zoom App Marketplace?",
+        "a": "No. VoicePrompter is a standalone desktop application for macOS and does not connect to the Zoom API. There is no account authorization, integration, or Marketplace installation required."
+      },
+      {
+        "q": "Will Zoom's screen recording capture the teleprompter window?",
+        "a": "No. Thanks to macOS native window exclusion APIs, the prompter window remains completely invisible to Zoom's local or cloud recording. Only you can see it on your screen."
+      },
+      {
+        "q": "How to use a teleprompter with Zoom meetings?",
+        "a": "To use VoicePrompter with Zoom: 1. Launch the app on your Mac. 2. Load your script from clipboard. 3. Drag the transparent window next to your webcam. 4. Start your Zoom call. Even if you share your desktop or application window, the prompter is system-level hidden from participants. 5. Speak naturally as it auto-scrolls following your voice."
+      }
+    ]
+  },
+  {
+    "slug": "microsoft-teams",
+    "name": "Microsoft Teams",
+    "platformName": "Microsoft Teams",
+    "logo": "/logos/microsoft-teams.svg",
+    "badgeText": "Seamless Teams Integration",
+    "metaTitle": "The Best Teleprompter for Microsoft Teams — VoicePrompter",
+    "metaDescription": "Read your script naturally on Microsoft Teams. A voice-activated floating teleprompter window that follows your voice and stays 100% invisible during screen shares.",
+    "canonicalUrl": "https://voiceprompter.app/mac/microsoft-teams/",
+    "eyebrow": "Microsoft Teams Integration",
+    "heroTitle": "The best teleprompter for Microsoft Teams",
+    "heroSubtitle": "Read your notes naturally during Teams meetings. Floating window stays on top, scrolls automatically as you speak, and is hidden on screen shares.",
+    "heroVideoEmbed": "<div class=\"video-responsive\"><iframe src=\"https://www.youtube.com/embed/2PYq2wI-HWk\" title=\"VoicePrompter for Microsoft Teams\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen loading=\"lazy\"></iframe></div>",
+    "footerCtaHeadline": "Ready to present confidently on Teams?",
+    "hideSections": [],
+    "audienceItems": [
+      {
+        "icon": "briefcase",
+        "title": "Corporate professionals",
+        "description": "presenting proposals, updates, and strategies on Microsoft Teams calls"
+      },
+      {
+        "icon": "users",
+        "title": "Sales teams",
+        "description": "running enterprise client pitches and demos through Microsoft Teams"
+      },
+      {
+        "icon": "clipboard",
+        "title": "HR and communications teams",
+        "description": "delivering scripted company-wide announcements and all-hands meetings"
+      },
+      {
+        "icon": "book",
+        "title": "Project managers",
+        "description": "presenting status updates and roadmap sessions on Teams"
+      },
+      {
+        "icon": "star",
+        "title": "Executives",
+        "description": "giving quarterly business reviews or leadership briefings on Teams"
+      },
+      {
+        "icon": "globe",
+        "title": "Consultants",
+        "description": "presenting polished client-facing proposals and findings via Teams"
+      }
+    ],
+    "faqOverrides": {
+      "screen-sharing": {
+        "q": "Will the teleprompter window show up to other Teams participants?",
+        "a": "No. Just like with Zoom and Google Meet, macOS handles window exclusion at the system level. The prompter window remains completely invisible to others during screen sharing on Microsoft Teams."
+      }
+    },
+    "extraFaqs": [
+      {
+        "q": "Does VoicePrompter work with both Microsoft Teams Web and the desktop app?",
+        "a": "Yes. Because VoicePrompter floats at the system level on macOS, it works flawlessly whether you use Microsoft Teams in Chrome/Safari, or run the native Teams desktop client."
+      },
+      {
+        "q": "Will Teams participants see my prompter when I share my screen?",
+        "a": "No. When you share your desktop or a specific window in Microsoft Teams, macOS excludes the VoicePrompter window from the video feed. Other participants will only see your presentation—never the prompter."
+      },
+      {
+        "q": "How to use a teleprompter with Microsoft Teams?",
+        "a": "To use VoicePrompter with Microsoft Teams: 1. Start the app on your macOS device. 2. Load your presentation notes. 3. Float the prompter window directly below your webcam. 4. Share your screen on Microsoft Teams—the prompter window is automatically hidden from the shared feed. 5. Present naturally as the script scrolls along with your speech."
+      }
+    ]
+  },
+  {
+    "slug": "loom",
+    "name": "Loom",
+    "platformName": "Loom",
+    "logo": "/logos/loom.svg",
+    "badgeText": "Seamless Loom Integration",
+    "metaTitle": "The Best Teleprompter for Loom Video Recordings — VoicePrompter",
+    "metaDescription": "Record perfect Loom videos in one take. A voice-activated floating teleprompter window that follows your voice and stays 100% invisible on your recordings.",
+    "canonicalUrl": "https://voiceprompter.app/mac/loom/",
+    "eyebrow": "Loom Integration",
+    "heroTitle": "The best teleprompter for Loom recordings",
+    "heroSubtitle": "Record perfect Loom videos in one take. Read your script naturally while looking directly at the camera. The prompter window is invisible in your recordings.",
+    "heroVideoEmbed": "<div class=\"video-responsive\"><iframe src=\"https://www.youtube.com/embed/2PYq2wI-HWk\" title=\"VoicePrompter for Loom\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen loading=\"lazy\"></iframe></div>",
+    "footerCtaHeadline": "Ready to record your best Loom yet?",
+    "hideSections": [],
+    "audienceItems": [
+      {
+        "icon": "monitor",
+        "title": "SaaS founders",
+        "description": "recording polished product walk-throughs and demos for Loom"
+      },
+      {
+        "icon": "briefcase",
+        "title": "Sales teams",
+        "description": "sending personalized Loom video messages to prospects with a natural, confident delivery"
+      },
+      {
+        "icon": "users",
+        "title": "Customer success reps",
+        "description": "creating onboarding and tutorial videos without retakes"
+      },
+      {
+        "icon": "video",
+        "title": "Course creators",
+        "description": "recording lesson content in a single take using a scripted teleprompter"
+      },
+      {
+        "icon": "star",
+        "title": "Marketing teams",
+        "description": "producing professional explainer and product videos that don't look scripted"
+      },
+      {
+        "icon": "mic",
+        "title": "Solo creators",
+        "description": "recording YouTube-style or Loom content with a script while staying on camera"
+      }
+    ],
+    "faqOverrides": {
+      "screen-sharing": {
+        "q": "Will the teleprompter window show up on my Loom recordings?",
+        "a": "No. VoicePrompter is built to be system-level invisible during screen recording. When you record your screen using Loom, the prompter window will not appear on the finished video."
+      }
+    },
+    "extraFaqs": [
+      {
+        "q": "Will the prompter window show up in my Loom recordings if I use the browser extension?",
+        "a": "No. VoicePrompter is fully integrated with macOS window capture exclusions. When you record your screen using Loom (via browser extension or the desktop app), the prompter window is automatically hidden from the output video."
+      },
+      {
+        "q": "Can I use VoicePrompter for recording Loom demos offline?",
+        "a": "Yes. Since VoicePrompter runs entirely on your local Mac, you can load your script from clipboard and record your demos offline. The prompter will guide your speech while staying invisible in the final Loom upload."
+      },
+      {
+        "q": "How to use a teleprompter with Loom video recordings?",
+        "a": "To use VoicePrompter with Loom: 1. Launch VoicePrompter. 2. Load your script. 3. Drag the prompter window close to your Mac camera. 4. Record your screen/camera with Loom. The prompter remains completely hidden on your recordings. 5. Present naturally without manual scrolling."
+      }
+    ]
+  },
+  {
+    "slug": "riverside",
+    "name": "Riverside",
+    "platformName": "Riverside",
+    "logo": "/logos/riverside.svg",
+    "badgeText": "Seamless Riverside Integration",
+    "metaTitle": "The Best Teleprompter for Riverside.fm Podcasts — VoicePrompter",
+    "metaDescription": "Nail your Riverside.fm podcast recordings. A voice-activated floating teleprompter window that follows your voice and stays 100% invisible on your feed.",
+    "canonicalUrl": "https://voiceprompter.app/mac/riverside/",
+    "eyebrow": "Riverside Integration",
+    "heroTitle": "The best teleprompter for Riverside",
+    "heroSubtitle": "Record flawless podcasts and interviews on Riverside.fm. The floating script follows your voice and stays completely invisible on screen captures and feeds.",
+    "heroVideoEmbed": "<div class=\"video-responsive\"><iframe src=\"https://www.youtube.com/embed/2PYq2wI-HWk\" title=\"VoicePrompter for Riverside\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen loading=\"lazy\"></iframe></div>",
+    "footerCtaHeadline": "Ready to sound like a pro on Riverside?",
+    "hideSections": [],
+    "audienceItems": [
+      {
+        "icon": "mic",
+        "title": "Podcast hosts",
+        "description": "recording scripted intros, ad reads, and episode transitions on Riverside"
+      },
+      {
+        "icon": "clipboard",
+        "title": "Journalists and interviewers",
+        "description": "conducting structured video interviews with key questions always in view"
+      },
+      {
+        "icon": "star",
+        "title": "Brands and thought leaders",
+        "description": "recording high-quality testimonials and video content on Riverside"
+      },
+      {
+        "icon": "video",
+        "title": "Solo creators",
+        "description": "narrating documentary-style or talk-show format episodes on Riverside"
+      },
+      {
+        "icon": "users",
+        "title": "Podcast guests",
+        "description": "keeping their talking points visible without distracting from the conversation"
+      },
+      {
+        "icon": "globe",
+        "title": "Multilingual creators",
+        "description": "hosting or guesting on Riverside podcasts in a second language"
+      }
+    ],
+    "faqOverrides": {
+      "screen-sharing": {
+        "q": "Will the teleprompter window be captured by Riverside?",
+        "a": "No. Riverside captures the feed from your browser or screen, but macOS window exclusion ensures that the VoicePrompter window is completely invisible to all capture software, keeping your script private."
+      }
+    },
+    "extraFaqs": [
+      {
+        "q": "Will VoicePrompter cause any audio echo or sync issues on Riverside?",
+        "a": "No. VoicePrompter's voice-activated scrolling relies on Apple's native speech recognition APIs which process audio locally. It does not output any audio feed or interfere with Riverside's high-quality audio recordings."
+      },
+      {
+        "q": "Is my script content private on Riverside podcast recordings?",
+        "a": "Yes. Since Riverside recording happens via browser window or screen capture, macOS native window exclusion prevents the prompter from showing up on the Riverside feed. Your script, talking points, and cues remain 100% private to you."
+      },
+      {
+        "q": "How to use a teleprompter with Riverside podcast recordings?",
+        "a": "To use VoicePrompter on Riverside: 1. Start VoicePrompter. 2. Load your podcast notes. 3. Place the transparent window next to your webcam. 4. Record your feed on Riverside. The prompter window is excluded from Riverside's capture. 5. Talk naturally as it follows your voice."
+      }
+    ]
+  }
+]

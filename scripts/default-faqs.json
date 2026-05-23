@@ -1,0 +1,72 @@
+[
+  {
+    "id": "voice-scrolling",
+    "q": "How does voice scrolling work?",
+    "a": "VoicePrompter uses Apple's native speech recognition to listen to what you say and match it in real time against your script. {{FAQ_OFFLINE_OR_PRIVACY}}"
+  },
+  {
+    "id": "screen-sharing",
+    "q": "Will the window show up during screen sharing or recordings?",
+    "a": "No - the window is invisible during screen sharing in {{PLATFORM_NAME}} and any other conferencing app. It's also invisible in screen recordings made with QuickTime, OBS, Loom, or any other recording tool. This is handled at the system level by macOS, not a software trick that could break."
+  },
+  {
+    "id": "apps-support",
+    "q": "Which apps does it work with?",
+    "a": "VoicePrompter works simultaneously with {{PLATFORM_NAME}} and any other app on your Mac - conferencing apps, screen recorders, presentation tools, streaming software, anything. It runs at the system level and doesn't require any plugins or modifications."
+  },
+  {
+    "id": "script-storage",
+    "q": "Where do I store my scripts?",
+    "a": "Wherever you already work - Google Docs, Apple Notes, Notion, Obsidian, or any other app. When you're ready, copy the text and click Load from Clipboard in the menu bar. The window opens instantly with your script loaded."
+  },
+  {
+    "id": "script-saving",
+    "q": "Are my scripts saved?",
+    "a": "VoicePrompter automatically saves up to 100 recent scripts locally on your device so you can reload them with one click. Nothing is uploaded or synced anywhere."
+  },
+  {
+    "id": "stage-directions",
+    "q": "Can I add stage directions or notes I don't want to read out loud?",
+    "a": "Yes - put anything in square brackets and VoicePrompter will display it but skip it during voice scrolling. Useful for cues like [pause], [smile], or [check slide]."
+  },
+  {
+    "id": "foreign-languages",
+    "q": "What if my script includes words in a different language?",
+    "a": "Put those words in square brackets and the speech recognition algorithm will skip over them, so you can keep speaking in your primary language without the sync breaking."
+  },
+  {
+    "id": "jump-scrolling",
+    "q": "Can I jump to a specific part of my script?",
+    "a": "Yes - tap any word on screen and VoicePrompter starts listening from exactly that point. Useful if you skip a section, restart a segment, or want to jump ahead."
+  },
+  {
+    "id": "loud-environments",
+    "q": "Will loud environments affect voice scrolling?",
+    "a": "Background noise can interfere with speech recognition in extreme cases, but VoicePrompter handles noisy environments well and has been tested reliably in louder settings. Normal office noise, keyboard sounds, or other participants speaking on your call won't cause issues."
+  },
+  {
+    "id": "multiple-screens",
+    "q": "Does it work across multiple screens?",
+    "a": "Yes - you can place the VoicePrompter window on any display. If you use an external monitor as a separate display, the window is visible only on whichever screen you place it on. If you mirror your screens, the window will appear on both - so for calls where you share your screen, use extend mode rather than mirror mode."
+  },
+  {
+    "id": "data-privacy",
+    "q": "Is my data private?",
+    "a": "VoicePrompter does not collect, process, or transmit your scripts or any other personal data. Everything runs on your device. This is verified by Apple - the app passed Apple's review process for security and data privacy before being approved on the Mac App Store."
+  },
+  {
+    "id": "supported-models",
+    "q": "Which Mac models are supported?",
+    "a": "VoicePrompter works on every Mac running macOS 15 or later, including both Intel and Apple Silicon models."
+  },
+  {
+    "id": "pricing",
+    "q": "Is the app free?",
+    "a": "VoicePrompter is free to use with up to 3 custom scripts, each with unlimited words and unlimited sessions. A demo script is also available for free with no limits. If you need more than 3 scripts, you can upgrade to Pro monthly, yearly, or with a one-time lifetime purchase."
+  },
+  {
+    "id": "read-naturally",
+    "q": "How do I read a script naturally during a video call?",
+    "a": "To read naturally on a video call: 1. Position your teleprompter script as close as possible to your webcam (VoicePrompter lets you float the window directly next to your camera). 2. Use voice-activated scrolling so you don't need manual clickers or keyboards. 3. Adjust the window transparency and font size so you can read comfortably without losing eye contact with participants."
+  }
+]

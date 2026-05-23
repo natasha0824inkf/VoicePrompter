@@ -4,20 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Best Teleprompter for Mac — VoicePrompter</title>
+    <title>{{META_TITLE}}</title>
     <meta name="description"
-        content="A floating teleprompter window for Mac that follows your voice, stays on top of full-screen apps, and is invisible during screen sharing.">
-    <link rel="canonical" href="https://voiceprompter.app/mac/">
+        content="{{META_DESCRIPTION}}">
+    <link rel="canonical" href="{{CANONICAL_URL}}">
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" type="image/svg+xml" href="/logo-icon-no-bg.svg">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://voiceprompter.app/mac/">
-    <meta property="og:title" content="The Best Teleprompter for Mac — VoicePrompter">
+    <meta property="og:url" content="{{CANONICAL_URL}}">
+    <meta property="og:title" content="{{META_TITLE}}">
     <meta property="og:description"
-        content="A floating teleprompter window for Mac that follows your voice, stays on top of full-screen apps, and is invisible during screen sharing.">
+        content="{{META_DESCRIPTION}}">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,141 +28,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/google-sans:vf@latest/latin.css">
 
     <!-- JSON-LD Structured Data -->
-    <script type="application/ld+json">
-[
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "VoicePrompter",
-    "operatingSystem": "macOS",
-    "applicationCategory": "MultimediaApplication",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "description": "A floating teleprompter window for Mac that follows your voice, stays on top of full-screen apps, and is invisible during screen sharing."
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "How does voice scrolling work?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "VoicePrompter uses Apple's native speech recognition to listen to what you say and match it in real time against your script. Everything happens entirely on your device - no audio is ever sent to any server. It works offline and requires no internet connection after the initial app download."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Will the window show up during screen sharing or recordings?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No - the window is invisible during screen sharing in FaceTime, Zoom, and Teams and any other conferencing app. It's also invisible in screen recordings made with QuickTime, OBS, Loom, or any other recording tool. This is handled at the system level by macOS, not a software trick that could break."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Which apps does it work with?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "VoicePrompter works simultaneously with FaceTime, Zoom, and Teams and any other app on your Mac - conferencing apps, screen recorders, presentation tools, streaming software, anything. It runs at the system level and doesn't require any plugins or modifications."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Where do I store my scripts?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Wherever you already work - Google Docs, Apple Notes, Notion, Obsidian, or any other app. When you're ready, copy the text and click Load from Clipboard in the menu bar. The window opens instantly with your script loaded."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Are my scripts saved?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "VoicePrompter automatically saves up to 100 recent scripts locally on your device so you can reload them with one click. Nothing is uploaded or synced anywhere."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Can I add stage directions or notes I don't want to read out loud?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes - put anything in square brackets and VoicePrompter will display it but skip it during voice scrolling. Useful for cues like [pause], [smile], or [check slide]."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What if my script includes words in a different language?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Put those words in square brackets and the speech recognition algorithm will skip over them, so you can keep speaking in your primary language without the sync breaking."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Can I jump to a specific part of my script?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes - tap any word on screen and VoicePrompter starts listening from exactly that point. Useful if you skip a section, restart a segment, or want to jump ahead."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Will loud environments affect voice scrolling?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Background noise can interfere with speech recognition in extreme cases, but VoicePrompter handles noisy environments well and has been tested reliably in louder settings. Normal office noise, keyboard sounds, or other participants speaking on your call won't cause issues."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Does it work across multiple screens?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes - you can place the VoicePrompter window on any display. If you use an external monitor as a separate display, the window is visible only on whichever screen you place it on. If you mirror your screens, the window will appear on both - so for calls where you share your screen, use extend mode rather than mirror mode."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Is my data private?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "VoicePrompter does not collect, process, or transmit your scripts or any other personal data. Everything runs on your device. This is verified by Apple - the app passed Apple's review process for security and data privacy before being approved on the Mac App Store."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Which Mac models are supported?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "VoicePrompter works on every Mac running macOS 15 or later, including both Intel and Apple Silicon models."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Is the app free?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "VoicePrompter is free to use with up to 3 custom scripts, each with unlimited words and unlimited sessions. A demo script is also available for free with no limits. If you need more than 3 scripts, you can upgrade to Pro monthly, yearly, or with a one-time lifetime purchase."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How do I read a script naturally during a video call?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "To read naturally on a video call: 1. Position your teleprompter script as close as possible to your webcam (VoicePrompter lets you float the window directly next to your camera). 2. Use voice-activated scrolling so you don't need manual clickers or keyboards. 3. Adjust the window transparency and font size so you can read comfortably without losing eye contact with participants."
-        }
-      }
-    ]
-  }
-]
-</script>
+    {{JSON_LD_SCHEMA}}
 
     <!-- Umami Analytics -->
 
@@ -1767,9 +1633,9 @@
 
     <!-- ═══════════════════════ Hero ═══════════════════════ -->
     <section class="hero container fade-up" id="hero">
-        <p class="eyebrow">VoicePrompter for macOS</p>
-        <h1>The most convenient teleprompter for Mac</h1>
-        <p class="hero-sub">A floating window that follows your voice, stays on top of every app, and disappears completely during screen sharing and recordings.</p>
+        {{HERO_EYEBROW_OR_BADGE}}
+        <h1>{{HERO_TITLE}}</h1>
+        <p class="hero-sub">{{HERO_SUBTITLE}}</p>
 
         <div class="hero-ctas">
             <a href="https://apps.apple.com/app/apple-store/id6758573080?pt=128503212&ct=mac-landing-hero&mt=8"
@@ -1785,7 +1651,7 @@
 
         <div class="hero-image">
             <div class="video-wrapper" style="box-shadow: 0 24px 64px rgba(0,0,0,0.4); border-radius: 10px; overflow: hidden;">
-                <div class="video-responsive"><iframe src="https://www.youtube.com/embed/2PYq2wI-HWk" title="VoicePrompter for Mac" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
+                {{HERO_VIDEO_EMBED}}
             </div>
         </div>
 
@@ -1794,23 +1660,23 @@
         <div class="logo-marquee">
             <div class="logo-marquee-track">
                 <!-- SET 1 -->
-                <a href="/mac/google-meet/" class="logo-marquee-item " data-platform="google-meet">
+                <a href="/mac/google-meet/" class="logo-marquee-item {{ACTIVE_GOOGLE_MEET}}" data-platform="google-meet">
                     <img src="/logos/google-meet.svg" alt="Google Meet">
                     <span class="visually-hidden">Google Meet</span>
                 </a>
-                <a href="/mac/zoom/" class="logo-marquee-item " data-platform="zoom">
+                <a href="/mac/zoom/" class="logo-marquee-item {{ACTIVE_ZOOM}}" data-platform="zoom">
                     <img src="/logos/zoom.svg" alt="Zoom Meetings">
                     <span class="visually-hidden">Zoom Meetings</span>
                 </a>
-                <a href="/mac/microsoft-teams/" class="logo-marquee-item " data-platform="microsoft-teams">
+                <a href="/mac/microsoft-teams/" class="logo-marquee-item {{ACTIVE_MICROSOFT_TEAMS}}" data-platform="microsoft-teams">
                     <img src="/logos/microsoft-teams.svg" alt="Microsoft Teams">
                     <span class="visually-hidden">Teams</span>
                 </a>
-                <a href="/mac/loom/" class="logo-marquee-item " data-platform="loom">
+                <a href="/mac/loom/" class="logo-marquee-item {{ACTIVE_LOOM}}" data-platform="loom">
                     <img src="/logos/loom.svg" alt="Loom">
                     <span class="visually-hidden">Loom</span>
                 </a>
-                <a href="/mac/riverside/" class="logo-marquee-item " data-platform="riverside">
+                <a href="/mac/riverside/" class="logo-marquee-item {{ACTIVE_RIVERSIDE}}" data-platform="riverside">
                     <img src="/logos/riverside.svg" alt="Riverside">
                     <span class="visually-hidden">Riverside</span>
                 </a>
@@ -1836,23 +1702,23 @@
                 </a>
 
                 <!-- SET 2 (Duplicate for infinite seamless scroll) -->
-                <a href="/mac/google-meet/" class="logo-marquee-item " data-platform="google-meet">
+                <a href="/mac/google-meet/" class="logo-marquee-item {{ACTIVE_GOOGLE_MEET}}" data-platform="google-meet">
                     <img src="/logos/google-meet.svg" alt="Google Meet">
                     <span class="visually-hidden">Google Meet</span>
                 </a>
-                <a href="/mac/zoom/" class="logo-marquee-item " data-platform="zoom">
+                <a href="/mac/zoom/" class="logo-marquee-item {{ACTIVE_ZOOM}}" data-platform="zoom">
                     <img src="/logos/zoom.svg" alt="Zoom Meetings">
                     <span class="visually-hidden">Zoom Meetings</span>
                 </a>
-                <a href="/mac/microsoft-teams/" class="logo-marquee-item " data-platform="microsoft-teams">
+                <a href="/mac/microsoft-teams/" class="logo-marquee-item {{ACTIVE_MICROSOFT_TEAMS}}" data-platform="microsoft-teams">
                     <img src="/logos/microsoft-teams.svg" alt="Microsoft Teams">
                     <span class="visually-hidden">Teams</span>
                 </a>
-                <a href="/mac/loom/" class="logo-marquee-item " data-platform="loom">
+                <a href="/mac/loom/" class="logo-marquee-item {{ACTIVE_LOOM}}" data-platform="loom">
                     <img src="/logos/loom.svg" alt="Loom">
                     <span class="visually-hidden">Loom</span>
                 </a>
-                <a href="/mac/riverside/" class="logo-marquee-item " data-platform="riverside">
+                <a href="/mac/riverside/" class="logo-marquee-item {{ACTIVE_RIVERSIDE}}" data-platform="riverside">
                     <img src="/logos/riverside.svg" alt="Riverside">
                     <span class="visually-hidden">Riverside</span>
                 </a>
@@ -1882,33 +1748,7 @@
 
     <!-- ═══════════════════════ Who is this for ═══════════════════════ -->
     <section class="audience container fade-up">
-                <h2>Who is this for?</h2>
-        <div class="audience-grid">
-            <div class="audience-item">
-                <div class="audience-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div>
-                <p><strong>Sales reps</strong> who need talking points visible on calls without the client ever seeing them</p>
-            </div>
-            <div class="audience-item">
-                <div class="audience-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg></div>
-                <p><strong>YouTubers and course creators</strong> who want to read a script while looking directly into the camera</p>
-            </div>
-            <div class="audience-item">
-                <div class="audience-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg></div>
-                <p><strong>Webinar hosts</strong> who need to stay on track without losing their place</p>
-            </div>
-            <div class="audience-item">
-                <div class="audience-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg></div>
-                <p><strong>Podcasters</strong> recording scripted intros, ad reads, or structured interviews</p>
-            </div>
-            <div class="audience-item">
-                <div class="audience-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg></div>
-                <p><strong>Non-native speakers</strong> who want to present in another language with confidence</p>
-            </div>
-            <div class="audience-item">
-                <div class="audience-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg></div>
-                <p><strong>Demo recorders</strong> who want to nail every take without starting over</p>
-            </div>
-        </div>
+        {{AUDIENCE_ITEMS}}
     </section>
 
 
@@ -2257,19 +2097,19 @@
             <details class="faq-item">
                 <summary>How does voice scrolling work?</summary>
                 <div class="faq-content">
-                    VoicePrompter uses Apple's native speech recognition to listen to what you say and match it in real time against your script. Everything happens entirely on your device - no audio is ever sent to any server. It works offline and requires no internet connection after the initial app download.
+                    VoicePrompter uses Apple's native speech recognition to listen to what you say and match it in real time against your script. Everything happens entirely on your device - no audio is ever sent to any server, ensuring 100% privacy and security.
                 </div>
             </details>
             <details class="faq-item">
                 <summary>Will the window show up during screen sharing or recordings?</summary>
                 <div class="faq-content">
-                    No - the window is invisible during screen sharing in FaceTime, Zoom, and Teams and any other conferencing app. It's also invisible in screen recordings made with QuickTime, OBS, Loom, or any other recording tool. This is handled at the system level by macOS, not a software trick that could break.
+                    No - the window is invisible during screen sharing in {{PLATFORM_NAME}}, FaceTime, Zoom, Teams, and any other conferencing app. It's also invisible in screen recordings made with QuickTime, OBS, Loom, or any other recording tool. This is handled at the system level by macOS, not a software trick that could break.
                 </div>
             </details>
             <details class="faq-item">
                 <summary>Which apps does it work with?</summary>
                 <div class="faq-content">
-                    VoicePrompter works simultaneously with FaceTime, Zoom, and Teams and any other app on your Mac - conferencing apps, screen recorders, presentation tools, streaming software, anything. It runs at the system level and doesn't require any plugins or modifications.
+                    VoicePrompter works simultaneously with {{PLATFORM_NAME}} and any other app on your Mac - conferencing apps, screen recorders, presentation tools, streaming software, anything. It runs at the system level and doesn't require any plugins or modifications to {{PLATFORM_NAME}}.
                 </div>
             </details>
             <details class="faq-item">
@@ -2305,13 +2145,13 @@
             <details class="faq-item">
                 <summary>Will loud environments affect voice scrolling?</summary>
                 <div class="faq-content">
-                    Background noise can interfere with speech recognition in extreme cases, but VoicePrompter handles noisy environments well and has been tested reliably in louder settings. Normal office noise, keyboard sounds, or other participants speaking on your call won't cause issues.
+                    Background noise can interfere with speech recognition in extreme cases, but VoicePrompter handles noisy environments well and has been tested reliably in louder settings. Normal office noise, keyboard sounds, or other participants speaking on the {{PLATFORM_NAME}} call won't cause issues.
                 </div>
             </details>
             <details class="faq-item">
                 <summary>Does it work across multiple screens?</summary>
                 <div class="faq-content">
-                    Yes - you can place the VoicePrompter window on any display. If you use an external monitor as a separate display, the window is visible only on whichever screen you place it on. If you mirror your screens, the window will appear on both - so for calls where you share your screen, use extend mode rather than mirror mode.
+                    Yes - you can place the VoicePrompter window on any display. If you use an external monitor as a separate display, the window is visible only on whichever screen you place it on. If you mirror your screens, the window will appear on both - so for {{PLATFORM_NAME}} calls where you share your screen, use extend mode rather than mirror mode.
                 </div>
             </details>
             <details class="faq-item">
@@ -2332,12 +2172,6 @@
                     VoicePrompter is free to use with up to 3 custom scripts, each with unlimited words and unlimited sessions. A demo script is also available for free with no limits. If you need more than 3 scripts, you can upgrade to Pro monthly, yearly, or with a one-time lifetime purchase.
                 </div>
             </details>
-            <details class="faq-item">
-                <summary>How do I read a script naturally during a video call?</summary>
-                <div class="faq-content">
-                    To read naturally on a video call: 1. Position your teleprompter script as close as possible to your webcam (VoicePrompter lets you float the window directly next to your camera). 2. Use voice-activated scrolling so you don't need manual clickers or keyboards. 3. Adjust the window transparency and font size so you can read comfortably without losing eye contact with participants.
-                </div>
-            </details>
             <!-- DEFAULT_FAQ_END -->
         </div>
         <div class="faq-more">
@@ -2348,13 +2182,13 @@
 
     <!-- ═══════════════════════ Footer CTA ═══════════════════════ -->
     <section class="footer-cta container fade-up">
-        <h2>Ready to stop memorizing?</h2>
+        <h2>{{FOOTER_CTA_HEADLINE}}</h2>
         <a href="https://apps.apple.com/app/apple-store/id6758573080?pt=128503212&ct=mac-landing-footer&mt=8"
             target="_blank" rel="noopener" data-umami-event="mac-footer-download">
             <img src="/Download_on_the_Mac_App_Store_Badge_US-UK_RGB_wht_092917.svg" alt="Download on the Mac App Store"
                 style="height:52px;margin:0 auto;">
         </a>
-        
+        {{WINDOWS_CTA_BLOCK}}
     </section>
 
     <!-- ═══════════════════════ Footer ═══════════════════════ -->

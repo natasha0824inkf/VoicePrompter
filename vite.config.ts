@@ -13,6 +13,16 @@ if (fs.existsSync(blogDir)) {
     });
 }
 
+// Dynamically gather all generated use-case HTML files
+const macDir = path.resolve(__dirname, 'mac');
+const useCaseInputs: Record<string, string> = {};
+if (fs.existsSync(macDir)) {
+    const folders = fs.readdirSync(macDir).filter(f => fs.statSync(path.join(macDir, f)).isDirectory());
+    folders.forEach(folder => {
+        useCaseInputs[`usecase_${folder}`] = `mac/${folder}/index.html`;
+    });
+}
+
 export default defineConfig({
     appType: 'mpa',
     // base: '/Teleprompter/', // Removed for custom domain
@@ -58,7 +68,8 @@ export default defineConfig({
                 blog: 'blog/index.html',
                 mac: 'mac/index.html',
                 web: 'web/index.html',
-                ...blogInputs
+                ...blogInputs,
+                ...useCaseInputs
             }
         }
     }
