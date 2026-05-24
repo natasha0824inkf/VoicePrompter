@@ -91,6 +91,28 @@ mdFiles.forEach(file => {
 
     articles.push(article);
 
+    // Generate VideoObject JSON-LD schema if frontmatter declares a video
+    let videoSchemaBlock = '';
+    if (frontmatter.video && frontmatter.video.videoId) {
+        const videoId = frontmatter.video.videoId;
+        const isoDate = (() => {
+            const d = new Date(article.date);
+            return isNaN(d.getTime()) ? new Date().toISOString().split('T')[0] : d.toISOString().split('T')[0];
+        })();
+        const videoSchema = {
+            "@context": "https://schema.org",
+            "@type": "VideoObject",
+            "name": article.title,
+            "description": article.description,
+            "thumbnailUrl": [`https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`],
+            "uploadDate": frontmatter.video.uploadDate || isoDate,
+            "contentUrl": `https://youtu.be/${videoId}`,
+            "embedUrl": `https://www.youtube.com/embed/${videoId}`,
+            ...(frontmatter.video.duration ? { duration: frontmatter.video.duration } : {})
+        };
+        videoSchemaBlock = `<script type="application/ld+json">\n${JSON.stringify(videoSchema, null, 2)}\n</script>`;
+    }
+
     // Generate HTML from template
     let html = articleTemplate
         .replace(/\{\{TITLE\}\}/g, article.title)
@@ -99,7 +121,8 @@ mdFiles.forEach(file => {
         .replace(/\{\{CONTENT\}\}/g, article.content)
         .replace(/\{\{KEYWORDS\}\}/g, article.keywords.join(', '))
         .replace(/\{\{SLUG\}\}/g, article.slug)
-        .replace(/\{\{IMAGE\}\}/g, article.image || 'https://voiceprompter.app/og-image.png');
+        .replace(/\{\{IMAGE\}\}/g, article.image || 'https://voiceprompter.app/og-image.png')
+        .replace(/\{\{VIDEO_SCHEMA\}\}/g, videoSchemaBlock);
 
     // Write HTML file
     const outputPath = path.join(BLOG_DIR, `${slug}.html`);
@@ -135,12 +158,7 @@ const sitemapEntries = [
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>`,
-    `  <url>
-    <loc>https://voiceprompter.app/app/</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>`,
+    // Note: /app/ is intentionally excluded — it's the live PWA UI and is noindexed.
     `  <url>
     <loc>https://voiceprompter.app/web/</loc>
     <lastmod>${today}</lastmod>
