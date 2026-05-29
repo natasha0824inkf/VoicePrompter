@@ -48,6 +48,13 @@ export function renderScript(): void {
     els.setupScreen.classList.add('hidden');
     els.prompterContainer.classList.remove('hidden');
 
+    // Toggle Google Docs Sync panel
+    if (state.googleDocUrl) {
+        els.refreshGoogleDocContainer.classList.remove('hidden');
+    } else {
+        els.refreshGoogleDocContainer.classList.add('hidden');
+    }
+
     state.currentIndex = 0;
     advancePastSkipped();
     updateHighlight();
@@ -249,7 +256,7 @@ export function updateMicUI(isListening: boolean): void {
     }
 }
 
-export function renderHistoryList(history: HistoryItem[], onLoad: (text: string) => void): void {
+export function renderHistoryList(history: HistoryItem[], onLoad: (text: string, googleDocUrl?: string | null) => void): void {
     els.historyList.innerHTML = '';
 
     if (history.length === 0) {
@@ -269,7 +276,7 @@ export function renderHistoryList(history: HistoryItem[], onLoad: (text: string)
         div.className = "bg-neutral-800 p-3 rounded border border-neutral-700 hover:border-blue-500 cursor-pointer transition group flex justify-between items-center shadow-sm min-w-[85%] md:min-w-0 snap-center";
         div.onclick = () => {
             els.inputScript.value = item.text;
-            onLoad(item.text);
+            onLoad(item.text, item.googleDocUrl || null);
         };
         div.innerHTML = `
             <div class="flex flex-col text-left overflow-hidden mr-2">
@@ -277,6 +284,7 @@ export function renderHistoryList(history: HistoryItem[], onLoad: (text: string)
                 <div class="flex items-center gap-2">
                     <span class="text-gray-500 text-xs">${item.date}</span>
                     ${item.tag ? `<span class="text-[9px] font-bold bg-[#FFBB00]/10 text-[#FFBB00] px-1.5 py-0.5 rounded-full uppercase tracking-wider">${item.tag}</span>` : ''}
+                    ${item.googleDocUrl ? `<span class="text-[9px] font-bold bg-blue-500/10 text-blue-400 px-1.5 py-0.5 rounded-full uppercase tracking-wider">Google Doc</span>` : ''}
                 </div>
             </div>
             <div class="flex-shrink-0">

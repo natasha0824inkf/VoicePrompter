@@ -2,12 +2,42 @@ import { state } from './state';
 import { els } from './elements';
 import { scrollToCurrent } from './render';
 
+// Mirror the preview only for the front ('user') camera, like a selfie view.
+// The rear camera should show a true (non-mirrored) image.
+function applyCameraMirror(): void {
+    els.videoPreview.style.transform =
+        state.facingMode === 'user' ? 'scaleX(-1)' : 'none';
+}
+
+export function getMediaConstraints(): MediaStreamConstraints {
+    const videoConstraints: any = {
+        width: { ideal: 1280 },
+        height: { ideal: 720 }
+    };
+    
+    if (state.selectedVideoDeviceId) {
+        videoConstraints.deviceId = state.selectedVideoDeviceId;
+    } else {
+        videoConstraints.facingMode = state.facingMode;
+    }
+
+    const audioConstraints: any = state.selectedAudioDeviceId
+        ? { deviceId: state.selectedAudioDeviceId }
+        : true;
+
+    return {
+        video: videoConstraints,
+        audio: audioConstraints
+    };
+}
+
 export async function enterVideoMode(): Promise<void> {
     try {
-        const stream = await navigator.mediaDevices.getUserMedia({
-            video: { facingMode: 'user', width: { ideal: 1280 }, height: { ideal: 720 } },
-            audio: true
-        });
+        // Always start on the front-facing camera unless a specific camera is chosen.
+        if (!state.selectedVideoDeviceId) {
+            state.facingMode = 'user';
+        }
+        const stream = await navigator.mediaDevices.getUserMedia(getMediaConstraints());
         state.mediaStream = stream;
         state.isVideoMode = true;
         state.videoLayoutMode = 'split';
@@ -15,6 +45,7 @@ export async function enterVideoMode(): Promise<void> {
         // Attach stream to video preview
         els.videoPreview.srcObject = stream;
         els.videoPreview.muted = true;
+        applyCameraMirror();
         await els.videoPreview.play();
 
         // Show video UI
@@ -36,6 +67,40 @@ export async function enterVideoMode(): Promise<void> {
     } catch (err) {
         console.error('Failed to access camera:', err);
         alert('Could not access your camera. Please allow camera and microphone permissions.');
+    }
+}
+
+export async function flipCamera(): Promise<void> {
+    if (!state.isVideoMode) return;
+    // Swapping the camera mid-recording would invalidate the MediaRecorder's
+    // stream, so block it while recording is in progress.
+    if (state.isRecording) return;
+
+    const previous = state.facingMode;
+    state.facingMode = previous === 'user' ? 'environment' : 'user';
+
+    // Clear custom device selection when manual flip button is pressed
+    state.selectedVideoDeviceId = null;
+    if (els.videoDeviceSelect) els.videoDeviceSelect.value = '';
+
+    try {
+        const stream = await navigator.mediaDevices.getUserMedia(getMediaConstraints());
+
+        // Tear down the old stream only after the new one is acquired.
+        if (state.mediaStream) {
+            state.mediaStream.getTracks().forEach(track => track.stop());
+        }
+        state.mediaStream = stream;
+        els.videoPreview.srcObject = stream;
+        applyCameraMirror();
+        await els.videoPreview.play();
+
+        (window as any).umami?.track('video-flip-camera', { facing: state.facingMode });
+    } catch (err) {
+        // Device may not have the requested camera — revert.
+        console.error('Failed to switch camera:', err);
+        state.facingMode = previous;
+        alert('Could not switch camera. This device may only have one camera.');
     }
 }
 

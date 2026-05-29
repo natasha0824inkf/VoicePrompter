@@ -6,8 +6,10 @@ import { renderScript, updateHighlight, scrollToCurrent, applySettings, renderHi
 import { initSpeech, startListening, stopListening } from './speech';
 import { saveToHistory, getHistory, clearAllHistory } from './storage';
 import { ScriptWord } from './types';
-import { enterVideoMode, exitVideoMode, toggleVideoLayout, startRecording, stopRecording } from './video';
+import { enterVideoMode, exitVideoMode, toggleVideoLayout, startRecording, stopRecording, flipCamera, getMediaConstraints } from './video';
 import { detectAll } from 'tinyld/light';
+import { fetchGoogleDocText } from './gdoc';
+import { enumerateAndPopulateDevices } from './devices';
 
 interface LangItem { id: string; name: string }
 
@@ -62,7 +64,7 @@ const LANG_MAP: Record<string, string> = {
 function renderLanguageDropdowns() {
     [els.languageSelectContainer, els.languageSelectSettingsContainer].forEach(container => {
         container.innerHTML = `
-            <button class="w-full flex items-center justify-between text-left bg-neutral-800 border border-neutral-700 rounded px-3 py-1.5 landscape:py-1 text-sm text-neutral-300 focus:ring-2 focus:ring-[#FFBB00] focus:border-transparent outline-none transition-colors hover:bg-neutral-700 min-w-[200px]" data-dropdown-toggle>
+            <button class="w-full flex items-center justify-between text-left bg-neutral-800 border border-neutral-700 rounded px-3 h-[38px] text-sm text-neutral-300 focus:ring-2 focus:ring-[#FFBB00] focus:border-transparent outline-none transition-colors hover:bg-neutral-700 min-w-[200px]" data-dropdown-toggle>
                 <div class="flex flex-col flex-1 truncate">
                     <span class="font-medium dropdown-title">Auto-detect</span>
                     <span class="text-[10px] text-neutral-400 dropdown-subtitle truncate h-3 mt-0.5" style="display: none;"></span>
@@ -219,13 +221,15 @@ function showLangDetectionWarning() {
 
 // --- Main Logic ---
 
-function loadScript(text: string): void {
+function loadScript(text: string, googleDocUrl: string | null = null): void {
     if (!text) return;
     const scriptText = text.trim();
     if (!scriptText) return;
 
+    state.googleDocUrl = googleDocUrl;
+
     // Save to history (unless it's a reload of the same text, handled by storage)
-    saveToHistory(scriptText);
+    saveToHistory(scriptText, googleDocUrl);
 
     // Detect language and update Speech Recognition
     let targetLang = state.languageSetting;
@@ -351,7 +355,6 @@ els.copyScriptBtn.addEventListener('click', async () => {
         els.copyScriptBtn.textContent = 'Copied!';
         setTimeout(() => els.copyScriptBtn.textContent = originalText, 1500);
     } catch (err) {
-        console.error('Failed to copy!', err);
     }
 });
 
@@ -364,6 +367,116 @@ els.pasteScriptBtn.addEventListener('click', async () => {
         els.inputScript.focus();
     } catch (err) {
         console.error('Failed to paste!', err);
+    }
+});
+
+// --- Google Doc Event Listeners ---
+
+// Show Import Modal
+els.importGoogleDocBtn.addEventListener('click', () => {
+    (window as any).umami?.track('open-google-doc-modal');
+    els.googleDocUrlInput.value = '';
+    els.googleDocModal.classList.remove('hidden');
+    els.googleDocUrlInput.focus();
+});
+
+// Close Import Modal
+els.closeGoogleDocModalBtn.addEventListener('click', () => {
+    els.googleDocModal.classList.add('hidden');
+});
+
+// Confirm Import from Google Doc
+els.confirmGoogleDocImportBtn.addEventListener('click', async () => {
+    const url = els.googleDocUrlInput.value.trim();
+    if (!url) {
+        alert('Please enter a Google Doc URL.');
+        return;
+    }
+
+    const btn = els.confirmGoogleDocImportBtn as HTMLButtonElement;
+    const originalText = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = 'Importing...';
+
+    try {
+        const text = await fetchGoogleDocText(url);
+        (window as any).umami?.track('import-google-doc-success');
+        
+        els.inputScript.value = text;
+        els.googleDocModal.classList.add('hidden');
+        
+        // Load script and pass the URL to state/history
+        loadScript(text, url);
+    } catch (err: any) {
+        (window as any).umami?.track('import-google-doc-error', { error: err.message });
+        alert(err.message || 'Failed to import document.');
+    } finally {
+        btn.disabled = false;
+        btn.textContent = originalText;
+    }
+});
+
+// Refresh Google Doc from Settings
+els.refreshGoogleDocBtn.addEventListener('click', async () => {
+    const url = state.googleDocUrl;
+    if (!url) return;
+
+    (window as any).umami?.track('refresh-google-doc-click');
+    const btn = els.refreshGoogleDocBtn as HTMLButtonElement;
+    const originalText = btn.innerHTML;
+    btn.disabled = true;
+    btn.textContent = 'Syncing...';
+
+    try {
+        const text = await fetchGoogleDocText(url);
+        (window as any).umami?.track('refresh-google-doc-success');
+
+        els.inputScript.value = text;
+
+        // Preserve current index if applicable
+        const prevIndex = state.currentIndex;
+        
+        loadScript(text, url);
+
+        // Restore position as close as possible
+        if (prevIndex < state.scriptWords.length) {
+            state.currentIndex = prevIndex;
+            updateHighlight();
+            scrollToCurrent();
+        }
+
+        btn.textContent = 'Synced!';
+        setTimeout(() => {
+            btn.disabled = false;
+            btn.innerHTML = originalText;
+        }, 1500);
+    } catch (err: any) {
+        (window as any).umami?.track('refresh-google-doc-error', { error: err.message });
+        alert(err.message || 'Failed to refresh document.');
+        btn.disabled = false;
+        btn.innerHTML = originalText;
+    }
+});
+
+// Copy Google Doc URL from Settings
+els.copyGoogleDocUrlBtn.addEventListener('click', async () => {
+    const url = state.googleDocUrl;
+    if (!url) return;
+
+    (window as any).umami?.track('copy-google-doc-url-click');
+    try {
+        await navigator.clipboard.writeText(url);
+        
+        // Show brief visual checkmark on the icon, and show alert
+        const originalHTML = els.copyGoogleDocUrlBtn.innerHTML;
+        els.copyGoogleDocUrlBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>`;
+        
+        alert('Google Doc link copied to clipboard!');
+        
+        els.copyGoogleDocUrlBtn.innerHTML = originalHTML;
+    } catch (err) {
+        console.error('Failed to copy Google Doc link:', err);
+        alert('Failed to copy link. Please manually copy it from the browser address bar.');
     }
 });
 
@@ -478,6 +591,7 @@ els.toggleSettingsBtn.addEventListener('click', () => {
     const isHidden = els.settingsPanel.classList.toggle('hidden');
     if (!isHidden) {
         startPromoAnimation();
+        enumerateAndPopulateDevices(false);
     } else {
         stopPromoAnimation();
     }
@@ -769,6 +883,9 @@ els.videoModeBtn.addEventListener('click', async () => {
 // Toggle Video Layout
 els.videoLayoutToggleBtn.addEventListener('click', toggleVideoLayout);
 
+// Flip Camera (front <-> rear)
+els.videoFlipCameraBtn.addEventListener('click', flipCamera);
+
 // Start Recording
 els.videoRecordBtn.addEventListener('click', startRecording);
 
@@ -836,6 +953,7 @@ function initializeUI(): void {
     // Apply all settings to DOM
     applySettings();
     updateFontFamilyButtons();
+    enumerateAndPopulateDevices(false);
 }
 
 function updateAlignmentButtons(): void {
@@ -874,4 +992,109 @@ function updateFontFamilyButtons(): void {
     });
 }
 
+async function handleDeviceChange(): Promise<void> {
+    state.selectedVideoDeviceId = els.videoDeviceSelect.value || null;
+    state.selectedAudioDeviceId = els.audioDeviceSelect.value || null;
+
+    // If video mode is active and not recording, seamlessly switch devices
+    if (state.isVideoMode && !state.isRecording) {
+        try {
+            const stream = await navigator.mediaDevices.getUserMedia(getMediaConstraints());
+            if (state.mediaStream) {
+                state.mediaStream.getTracks().forEach(track => track.stop());
+            }
+            state.mediaStream = stream;
+            els.videoPreview.srcObject = stream;
+            els.videoPreview.muted = true;
+            
+            // Use same mirroring rule (mirror front camera selfie mode)
+            els.videoPreview.style.transform = state.selectedVideoDeviceId ? 'none' : (state.facingMode === 'user' ? 'scaleX(-1)' : 'none');
+            await els.videoPreview.play();
+        } catch (err) {
+            console.error('Failed to switch media device sources:', err);
+            alert('Failed to switch to the selected device.');
+        }
+    }
+
+    // If speech recognition is listening, restart it to apply the new microphone selection context
+    if (state.isListening) {
+        stopListening();
+        setTimeout(() => {
+            startListening();
+        }, 400);
+    }
+}
+
+els.videoDeviceSelect.addEventListener('change', handleDeviceChange);
+els.audioDeviceSelect.addEventListener('change', handleDeviceChange);
+
+const permissionRequested = { video: false, audio: false };
+
+async function requestPermissionsOnSelectFocus(kind: 'video' | 'audio') {
+    if (permissionRequested[kind]) return;
+    
+    // Check if we already have device labels for this kind
+    const devices = await navigator.mediaDevices.enumerateDevices();
+    const needsPermission = devices.some(d => {
+        if (kind === 'video' && d.kind === 'videoinput' && !d.label) return true;
+        if (kind === 'audio' && d.kind === 'audioinput' && !d.label) return true;
+        return false;
+    });
+    
+    if (needsPermission) {
+        permissionRequested[kind] = true;
+        // Trigger permissions dialog and re-populate for this device kind
+        await enumerateAndPopulateDevices(true, kind);
+    }
+}
+
+els.videoDeviceSelect.addEventListener('focus', () => requestPermissionsOnSelectFocus('video'));
+els.audioDeviceSelect.addEventListener('focus', () => requestPermissionsOnSelectFocus('audio'));
+els.videoDeviceSelect.addEventListener('mousedown', () => requestPermissionsOnSelectFocus('video'));
+els.audioDeviceSelect.addEventListener('mousedown', () => requestPermissionsOnSelectFocus('audio'));
+
+// Listen for browser device changes
+navigator.mediaDevices.addEventListener('devicechange', () => {
+    enumerateAndPopulateDevices(false);
+});
+
 initializeUI();
+
+// Pin the floating controls dock to the visual viewport. iOS Safari (esp. in
+// landscape) paints `position: fixed` elements near the visual viewport's
+// bottom but hit-tests them at their layout-viewport position — so taps fall
+// through to the script. Computing `top` from `visualViewport` keeps the hit
+// rect under the rendered button.
+function pinDockToVisualViewport(): void {
+    const dock = document.getElementById('mainControlsDock');
+    const vv = window.visualViewport;
+    if (!dock || !vv) return;
+    const update = () => {
+        const visualBottomInLayout = vv.offsetTop + vv.height;
+        const margin = 32; // matches original `bottom-8`
+        dock.style.bottom = 'auto';
+        dock.style.top = `${visualBottomInLayout - dock.offsetHeight - margin}px`;
+    };
+    vv.addEventListener('resize', update);
+    vv.addEventListener('scroll', update);
+    window.addEventListener('orientationchange', () => requestAnimationFrame(update));
+    requestAnimationFrame(update);
+
+    // Recalculate when the prompter container is shown (class 'hidden' is removed)
+    const prompterContainer = document.getElementById('prompterContainer');
+    if (prompterContainer) {
+        const observer = new MutationObserver((mutations) => {
+            for (const mutation of mutations) {
+                if (mutation.attributeName === 'class') {
+                    const target = mutation.target as HTMLElement;
+                    if (!target.classList.contains('hidden')) {
+                        // Let the DOM update first, then recalculate
+                        requestAnimationFrame(update);
+                    }
+                }
+            }
+        });
+        observer.observe(prompterContainer, { attributes: true, attributeFilter: ['class'] });
+    }
+}
+pinDockToVisualViewport();

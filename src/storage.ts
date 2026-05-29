@@ -6,7 +6,7 @@ export function getHistory(): HistoryItem[] {
     return JSON.parse(localStorage.getItem(HISTORY_KEY) || '[]');
 }
 
-export function saveToHistory(text: string): void {
+export function saveToHistory(text: string, googleDocUrl?: string | null): void {
     let history = getHistory();
     if (history.length > 0 && history[0].text === text) return;
 
@@ -14,7 +14,8 @@ export function saveToHistory(text: string): void {
         id: Date.now(),
         text: text,
         preview: text.substring(0, 40) + (text.length > 40 ? '...' : ''),
-        date: new Date().toLocaleDateString()
+        date: new Date().toLocaleDateString(),
+        ...(googleDocUrl ? { googleDocUrl } : {})
     };
 
     history.unshift(item);

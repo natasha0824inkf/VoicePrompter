@@ -84,10 +84,22 @@ export interface Elements {
     videoPreview: HTMLVideoElement;
     videoContainer: HTMLElement;
     videoLayoutToggleBtn: HTMLElement;
+    videoFlipCameraBtn: HTMLElement;
     videoRecordBtn: HTMLElement;
     videoStopBtn: HTMLElement;
     videoControls: HTMLElement;
     videoRecordingIndicator: HTMLElement;
+    // Google Doc Integration
+    importGoogleDocBtn: HTMLElement;
+    googleDocModal: HTMLElement;
+    googleDocUrlInput: HTMLInputElement;
+    confirmGoogleDocImportBtn: HTMLElement;
+    closeGoogleDocModalBtn: HTMLElement;
+    refreshGoogleDocBtn: HTMLElement;
+    refreshGoogleDocContainer: HTMLElement;
+    copyGoogleDocUrlBtn: HTMLElement;
+    videoDeviceSelect: HTMLSelectElement;
+    audioDeviceSelect: HTMLSelectElement;
 }
 
 export let els: Elements;
@@ -179,9 +191,21 @@ export function initElements(): void {
         videoPreview: document.getElementById('videoPreview') as HTMLVideoElement,
         videoContainer: document.getElementById('videoContainer')!,
         videoLayoutToggleBtn: document.getElementById('videoLayoutToggleBtn')!,
+        videoFlipCameraBtn: document.getElementById('videoFlipCameraBtn')!,
         videoRecordBtn: document.getElementById('videoRecordBtn')!,
         videoStopBtn: document.getElementById('videoStopBtn')!,
         videoControls: document.getElementById('videoControls')!,
-        videoRecordingIndicator: document.getElementById('videoRecordingIndicator')!
+        videoRecordingIndicator: document.getElementById('videoRecordingIndicator')!,
+        // Google Doc Integration
+        importGoogleDocBtn: document.getElementById('importGoogleDocBtn')!,
+        googleDocModal: document.getElementById('googleDocModal')!,
+        googleDocUrlInput: document.getElementById('googleDocUrlInput') as HTMLInputElement,
+        confirmGoogleDocImportBtn: document.getElementById('confirmGoogleDocImportBtn')!,
+        closeGoogleDocModalBtn: document.getElementById('closeGoogleDocModalBtn')!,
+        refreshGoogleDocBtn: document.getElementById('refreshGoogleDocBtn')!,
+        refreshGoogleDocContainer: document.getElementById('refreshGoogleDocContainer')!,
+        copyGoogleDocUrlBtn: document.getElementById('copyGoogleDocUrlBtn')!,
+        videoDeviceSelect: document.getElementById('videoDeviceSelect') as HTMLSelectElement,
+        audioDeviceSelect: document.getElementById('audioDeviceSelect') as HTMLSelectElement
     };
 }

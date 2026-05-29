@@ -32,8 +32,12 @@ export const state: AppState = {
     // Video recording state
     isVideoMode: false,
     videoLayoutMode: 'split',
+    facingMode: 'user',
     isRecording: false,
     mediaRecorder: null,
     mediaStream: null,
-    recordedChunks: []
+    recordedChunks: [],
+    googleDocUrl: null,
+    selectedVideoDeviceId: null,
+    selectedAudioDeviceId: null
 };

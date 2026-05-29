@@ -43,10 +43,14 @@ export interface AppState {
     // Video recording state
     isVideoMode: boolean;
     videoLayoutMode: VideoLayoutMode;
+    facingMode: 'user' | 'environment';
     isRecording: boolean;
     mediaRecorder: MediaRecorder | null;
     mediaStream: MediaStream | null;
     recordedChunks: Blob[];
+    googleDocUrl: string | null;
+    selectedVideoDeviceId: string | null;
+    selectedAudioDeviceId: string | null;
 }
 
 export interface HistoryItem {
@@ -55,4 +59,5 @@ export interface HistoryItem {
     preview: string;
     date: string;
     tag?: string;
+    googleDocUrl?: string;
 }
