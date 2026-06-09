@@ -101,6 +101,7 @@ export interface Elements {
     copyGoogleDocUrlBtn: HTMLElement;
     videoDeviceSelect: HTMLSelectElement;
     audioDeviceSelect: HTMLSelectElement;
+    devicesSelectionContainer: HTMLElement;
 }
 
 export let els: Elements;
@@ -208,6 +209,7 @@ export function initElements(): void {
         refreshGoogleDocContainer: document.getElementById('refreshGoogleDocContainer')!,
         copyGoogleDocUrlBtn: document.getElementById('copyGoogleDocUrlBtn')!,
         videoDeviceSelect: document.getElementById('videoDeviceSelect') as HTMLSelectElement,
-        audioDeviceSelect: document.getElementById('audioDeviceSelect') as HTMLSelectElement
+        audioDeviceSelect: document.getElementById('audioDeviceSelect') as HTMLSelectElement,
+        devicesSelectionContainer: document.getElementById('devicesSelectionContainer')!
     };
 }

@@ -11,6 +11,8 @@ import { detectAll } from 'tinyld/light';
 import { fetchGoogleDocText } from './gdoc';
 import { enumerateAndPopulateDevices } from './devices';
 
+const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+
 interface LangItem { id: string; name: string }
 
 const AUTO_LANGS: LangItem[] = [
@@ -603,7 +605,9 @@ els.toggleSettingsBtn.addEventListener('click', () => {
     const isHidden = els.settingsPanel.classList.toggle('hidden');
     if (!isHidden) {
         startPromoAnimation();
-        enumerateAndPopulateDevices(false);
+        if (!isIOS) {
+            enumerateAndPopulateDevices(false);
+        }
     } else {
         stopPromoAnimation();
     }
@@ -965,7 +969,13 @@ function initializeUI(): void {
     // Apply all settings to DOM
     applySettings();
     updateFontFamilyButtons();
-    enumerateAndPopulateDevices(false);
+    if (isIOS) {
+        if (els.devicesSelectionContainer) {
+            els.devicesSelectionContainer.classList.add('hidden');
+        }
+    } else {
+        enumerateAndPopulateDevices(false);
+    }
 }
 
 function updateAlignmentButtons(): void {
@@ -1037,8 +1047,10 @@ async function handleDeviceChange(): Promise<void> {
     }
 }
 
-els.videoDeviceSelect.addEventListener('change', handleDeviceChange);
-els.audioDeviceSelect.addEventListener('change', handleDeviceChange);
+if (!isIOS) {
+    els.videoDeviceSelect.addEventListener('change', handleDeviceChange);
+    els.audioDeviceSelect.addEventListener('change', handleDeviceChange);
+}
 
 const permissionRequested = { video: false, audio: false };
 
@@ -1060,15 +1072,17 @@ async function requestPermissionsOnSelectFocus(kind: 'video' | 'audio') {
     }
 }
 
-els.videoDeviceSelect.addEventListener('focus', () => requestPermissionsOnSelectFocus('video'));
-els.audioDeviceSelect.addEventListener('focus', () => requestPermissionsOnSelectFocus('audio'));
-els.videoDeviceSelect.addEventListener('mousedown', () => requestPermissionsOnSelectFocus('video'));
-els.audioDeviceSelect.addEventListener('mousedown', () => requestPermissionsOnSelectFocus('audio'));
+if (!isIOS) {
+    els.videoDeviceSelect.addEventListener('focus', () => requestPermissionsOnSelectFocus('video'));
+    els.audioDeviceSelect.addEventListener('focus', () => requestPermissionsOnSelectFocus('audio'));
+    els.videoDeviceSelect.addEventListener('mousedown', () => requestPermissionsOnSelectFocus('video'));
+    els.audioDeviceSelect.addEventListener('mousedown', () => requestPermissionsOnSelectFocus('audio'));
 
-// Listen for browser device changes
-navigator.mediaDevices.addEventListener('devicechange', () => {
-    enumerateAndPopulateDevices(false);
-});
+    // Listen for browser device changes
+    navigator.mediaDevices.addEventListener('devicechange', () => {
+        enumerateAndPopulateDevices(false);
+    });
+}
 
 initializeUI();
 
