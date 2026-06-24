@@ -859,6 +859,11 @@ els.dismissWarningBtn.addEventListener('click', () => {
     els.browserWarning.classList.add('hidden');
 });
 
+// Dismiss Speech Service Warning (Brave / service-not-allowed / mic denied)
+els.dismissSpeechServiceWarningBtn.addEventListener('click', () => {
+    els.speechServiceWarning.classList.add('hidden');
+});
+
 // Dismiss iPad PWA Warning
 els.dismissIpadWarningBtn.addEventListener('click', () => {
     els.ipadPwaWarning.classList.add('hidden');

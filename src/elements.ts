@@ -29,6 +29,10 @@ export interface Elements {
     mirrorToggle: HTMLInputElement;
     browserWarning: HTMLElement;
     dismissWarningBtn: HTMLElement;
+    speechServiceWarning: HTMLElement;
+    speechServiceWarningTitle: HTMLElement;
+    speechServiceWarningBody: HTMLElement;
+    dismissSpeechServiceWarningBtn: HTMLElement;
     ipadPwaWarning: HTMLElement;
     dismissIpadWarningBtn: HTMLElement;
     langDetectionWarning: HTMLElement;
@@ -138,6 +142,10 @@ export function initElements(): void {
         mirrorToggle: document.getElementById('mirrorToggle') as HTMLInputElement,
         browserWarning: document.getElementById('browserWarning')!,
         dismissWarningBtn: document.getElementById('dismissWarningBtn')!,
+        speechServiceWarning: document.getElementById('speechServiceWarning')!,
+        speechServiceWarningTitle: document.getElementById('speechServiceWarningTitle')!,
+        speechServiceWarningBody: document.getElementById('speechServiceWarningBody')!,
+        dismissSpeechServiceWarningBtn: document.getElementById('dismissSpeechServiceWarningBtn')!,
         ipadPwaWarning: document.getElementById('ipadPwaWarning')!,
         dismissIpadWarningBtn: document.getElementById('dismissIpadWarningBtn')!,
         langDetectionWarning: document.getElementById('langDetectionWarning')!,
