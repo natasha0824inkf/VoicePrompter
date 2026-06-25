@@ -3,9 +3,11 @@
 **Access the app:** [https://voiceprompter.app/](https://voiceprompter.app/)
 
 > **This is a fork of [kosuvorov/VoicePrompter](https://github.com/kosuvorov/VoicePrompter) — the original app is live at [voiceprompter.app](https://voiceprompter.app/).**
-> The goal of this fork is to make the app work on setups where the original silently fails — specifically **Brave browser** (which blocks Google's speech API by default) and **Intel-based machines** where video codec support varies. Instead of leaving users with a mic button that does nothing, this fork adds clear, actionable error messages that explain what's blocked and how to fix it.
+> This fork adds a clear warning when **Brave browser** blocks the speech recognition service (instead of the mic button silently doing nothing). It does not fix Intel hardware or make voice work in browsers that don't support it.
 
 A modern, privacy-focused voice-controlled teleprompter that works completely offline. Uses your browser's built-in speech recognition (Web Speech API) and native iOS WebKit — no external APIs, completely private, and blazing fast on-device processing.
+
+> ⚠️ **Disclaimer:** Voice scrolling requires the Web Speech API, which only works in **Chrome, Edge, and Safari** — and needs an active internet connection to reach Google's speech servers. It does not work in Firefox, and may not work on some network or hardware configurations even in supported browsers. All other features (manual scrolling, script history, settings, video recording) work without voice.
 
 ## ✨ Key Features
 
@@ -43,7 +45,7 @@ Brave's privacy shields block the connection to Google's speech recognition serv
 All other features (manual scrolling, script history, video recording, settings) work normally in Brave without any changes.
 
 ### 💻 Intel Hardware
-The app works on Intel-based machines (Windows, Linux, macOS) in Chrome, Edge, and Safari. Video recording automatically selects the best available codec — MP4/H.264 when supported, falling back to WebM/VP9 or WebM/VP8 on older Intel integrated graphics that lack hardware H.264 encoding.
+Intel CPU/GPU does not affect voice recognition — that depends entirely on your browser and network. Video recording on Intel automatically falls back from MP4/H.264 to WebM if hardware encoding isn't available, so recording should still work. Voice not working on an Intel machine is a browser or network issue, not a hardware one.
 
 ## 📥 Installing as a PWA (Progressive Web App)
 
