@@ -33,6 +33,12 @@ export interface Elements {
     speechServiceWarningTitle: HTMLElement;
     speechServiceWarningBody: HTMLElement;
     dismissSpeechServiceWarningBtn: HTMLElement;
+    useOfflineModeBtn: HTMLElement;
+    whisperLoadingModal: HTMLElement;
+    whisperLoadingTitle: HTMLElement;
+    whisperLoadingMsg: HTMLElement;
+    whisperProgressBar: HTMLElement;
+    cancelWhisperLoadBtn: HTMLElement;
     ipadPwaWarning: HTMLElement;
     dismissIpadWarningBtn: HTMLElement;
     langDetectionWarning: HTMLElement;
@@ -146,6 +152,12 @@ export function initElements(): void {
         speechServiceWarningTitle: document.getElementById('speechServiceWarningTitle')!,
         speechServiceWarningBody: document.getElementById('speechServiceWarningBody')!,
         dismissSpeechServiceWarningBtn: document.getElementById('dismissSpeechServiceWarningBtn')!,
+        useOfflineModeBtn: document.getElementById('useOfflineModeBtn')!,
+        whisperLoadingModal: document.getElementById('whisperLoadingModal')!,
+        whisperLoadingTitle: document.getElementById('whisperLoadingTitle')!,
+        whisperLoadingMsg: document.getElementById('whisperLoadingMsg')!,
+        whisperProgressBar: document.getElementById('whisperProgressBar')!,
+        cancelWhisperLoadBtn: document.getElementById('cancelWhisperLoadBtn')!,
         ipadPwaWarning: document.getElementById('ipadPwaWarning')!,
         dismissIpadWarningBtn: document.getElementById('dismissIpadWarningBtn')!,
         langDetectionWarning: document.getElementById('langDetectionWarning')!,
