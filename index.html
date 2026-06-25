@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VoicePrompter | Free Voice-Activated Teleprompter for Mac & Web</title>
+    <meta name="description"
+        content="The free teleprompter that follows your voice. Works in your browser or as a native Mac app — invisible during Zoom, Google Meet & Teams shares.">
+    <link rel="canonical" href="https://voiceprompter.app/">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/svg+xml" href="/logo-icon-no-bg.svg">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://voiceprompter.app/">
+    <meta property="og:title" content="VoicePrompter | Free Voice-Activated Teleprompter for Mac & Web">
+    <meta property="og:description"
+        content="The free teleprompter that follows your voice. Works in your browser or as a native Mac app — invisible during Zoom, Google Meet & Teams shares.">
+    <meta property="og:image" content="https://voiceprompter.app/og-image.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://voiceprompter.app/">
+    <meta property="twitter:title" content="VoicePrompter | Free Voice-Activated Teleprompter for Mac & Web">
+    <meta property="twitter:description"
+        content="The free teleprompter that follows your voice. Works in your browser or as a native Mac app — invisible during Zoom, Google Meet & Teams shares.">
+    <meta property="twitter:image" content="https://voiceprompter.app/og-image.png">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "VoicePrompter",
+      "operatingSystem": "Web, iOS, Android, Windows, macOS",
+      "applicationCategory": "MultimediaApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "Free voice-activated teleprompter app that scrolls automatically as you speak. Works offline, secure, and requires no download.",
+      "featureList": "Voice recognition scrolling, Mirror mode, Offline capable, Cross-platform, Customizable font and speed"
+    }
+    </script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Google+Sans+Flex:opsz,wght@8..144,100..1000&family=Roboto+Flex:opsz,wght@8..144,400;8..144,500;8..144,600;8..144,700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/google-sans:vf@latest/latin.css">
+
+    <!-- Umami Analytics -->
+    <script defer src="https://reactive-analytics.up.railway.app/script.js"
+        data-website-id="eee38a2c-9b72-4937-9ee4-37827bae546c"></script>
+
+    <style>
+        /* ───────────────────────── Reset & Tokens ───────────────────────── */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #0F0F0F;
+            --surface: #1A1A1A;
+            --surface-border: rgba(255, 255, 255, 0.06);
+            --text: #E8E4DF;
+            --text-light: #9A948D;
+            --accent: #F5F0EB;
+            --pop: #FFBB00;
+            --pop-hover: #D9A000;
+            --shadow: 0 2px 24px rgba(0, 0, 0, 0.35);
+            --radius: 18px;
+            --pill: 100px;
+            --font-serif: 'Google Sans', 'Google Sans Flex', 'Product Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-sans: 'DM Sans', 'Segoe UI', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--font-sans);
+            font-size: 17px;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Grain overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            pointer-events: none;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            background-repeat: repeat;
+            background-size: 180px 180px;
+        }
+
+        img,
+        svg {
+            display: block;
+            max-width: 100%;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* ───────────────────────── Layout ───────────────────────── */
+        .container {
+            max-width: 1060px;
+            margin: 0 auto;
+            padding: 0 32px;
+            width: 100%;
+        }
+
+        .page-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 60px 0 40px;
+        }
+
+        .fade-up {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ───────────────────────── Nav ───────────────────────── */
+        .nav {
+            padding: 28px 32px;
+            max-width: 1060px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .nav-logo img {
+            position: relative;
+            top: -1px;
+        }
+
+        .nav-logo {
+            display: inline-flex;
+            align-items: center;
+            font-family: 'Google Sans Flex', 'Roboto Flex', 'DM Sans', system-ui, sans-serif;
+            font-size: 22px;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: -0.02em;
+        }
+
+
+        /* ───────────────────────── Hero ───────────────────────── */
+        .hero {
+            text-align: center;
+            margin-bottom: 56px;
+        }
+
+        .eyebrow {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--pop);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-family: var(--font-serif);
+            font-size: 56px;
+            line-height: 1.12;
+            color: var(--accent);
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+
+        .startup-fame-badge {
+            display: inline-block;
+            margin-bottom: 24px;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+        }
+
+        .startup-fame-badge:hover {
+            opacity: 1;
+        }
+
+        .startup-fame-badge img {
+            height: 32px;
+            width: auto;
+        }
+
+        .hero-sub {
+            font-size: 19px;
+            color: var(--text-light);
+            max-width: 480px;
+            margin: 0 auto 32px;
+            line-height: 1.6;
+        }
+
+        .hero-ctas {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        /* ───────────────────────── Fork ───────────────────────── */
+        .fork-label {
+            text-align: center;
+            margin-bottom: 32px;
+            font-size: 14px;
+            color: var(--text-light);
+            letter-spacing: 0.08em;
+        }
+
+        .fork-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 48px;
+        }
+
+        .fork-card {
+            background: var(--surface);
+            border: 1px solid var(--surface-border);
+            border-radius: var(--radius);
+            padding: 40px 32px 36px;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+
+        .fork-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
+        }
+
+        .card-tag {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--pop);
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            padding: 4px 12px;
+            background: rgba(255, 187, 0, 0.1);
+            border-radius: var(--pill);
+            align-self: flex-start;
+        }
+
+        .card-title {
+            font-family: var(--font-serif);
+            font-size: 30px;
+            color: var(--accent);
+            margin-bottom: 16px;
+            letter-spacing: -0.01em;
+        }
+
+        .card-subtitle {
+            display: block;
+            font-family: var(--font-sans);
+            font-size: 14px;
+            font-weight: 400;
+            color: var(--text-light);
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            margin-top: 6px;
+        }
+
+        .card-body {
+            font-size: 16px;
+            color: var(--text-light);
+            line-height: 1.65;
+            margin-bottom: 24px;
+        }
+
+        .card-perks {
+            list-style: none;
+            margin-bottom: 32px;
+            flex: 1;
+        }
+
+        .card-perks li {
+            font-size: 14px;
+            color: var(--text-light);
+            padding: 6px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-perks li::before {
+            content: '—';
+            color: var(--pop);
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .card-cta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            background: var(--pop);
+            color: #1A1410;
+            font-family: var(--font-sans);
+            font-size: 15px;
+            font-weight: 500;
+            padding: 13px 28px;
+            border-radius: var(--pill);
+            transition: background 0.25s, transform 0.2s;
+            align-self: flex-start;
+        }
+
+        .card-cta:hover {
+            background: var(--pop-hover);
+            transform: translateY(-1px);
+        }
+
+        .card-flavor {
+            margin-top: 12px;
+            font-size: 13px;
+            color: var(--text-light);
+            font-style: italic;
+        }
+
+        /* Mac card — slightly different accent */
+        .fork-card.mac .card-tag {
+            color: var(--accent);
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .fork-card.mac .card-cta {
+            background: var(--accent);
+            color: var(--bg);
+        }
+
+        .fork-card.mac .card-cta:hover {
+            background: #ddd8d2;
+        }
+
+        /* ───────────────────────── Escape Hatch ───────────────────────── */
+        .escape {
+            text-align: center;
+            margin-bottom: 0;
+        }
+
+        .escape p {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-bottom: 16px;
+        }
+
+        .escape-btns {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .escape-btn-web {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--surface);
+            color: var(--accent);
+            border: 1px solid var(--surface-border);
+            font-family: var(--font-sans);
+            font-size: 16px;
+            font-weight: 500;
+            padding: 0 12px;
+            height: 44px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: border-color 0.2s, transform 0.2s, background 0.2s;
+        }
+
+        .escape-btn-web:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+            background: #252525;
+            transform: translateY(-1px);
+        }
+
+        .escape-btn-mac img {
+            height: 44px;
+            display: block;
+            transition: opacity 0.2s, transform 0.2s;
+        }
+
+        .escape-btn-mac:hover img {
+            opacity: 0.85;
+            transform: translateY(-1px);
+        }
+
+        /* ───────────────────────── Footer ───────────────────────── */
+        .footer {
+            padding: 64px 32px 40px;
+            border-top: 1px solid var(--surface-border);
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 48px;
+        }
+
+        .footer-col h4 {
+            font-family: var(--font-sans);
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-light);
+            margin-bottom: 16px;
+        }
+
+        .footer-col a {
+            display: block;
+            font-size: 14px;
+            color: var(--text);
+            text-decoration: none;
+            padding: 4px 0;
+            transition: color 0.2s;
+        }
+
+        .footer-col a:hover {
+            color: var(--pop);
+        }
+
+        .footer-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 24px;
+            border-top: 1px solid var(--surface-border);
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .footer-bottom p {
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .footer-social a {
+            color: var(--text-light);
+            transition: color 0.2s;
+        }
+
+        .footer-social a:hover {
+            color: var(--pop);
+        }
+
+        .footer-social svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* ═══════════════════════ Responsive ═══════════════════════ */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero-sub {
+                font-size: 17px;
+            }
+
+            .eyebrow {
+                font-size: 12px;
+            }
+
+            .fork-label {
+                font-size: 13px;
+                margin-bottom: 24px;
+            }
+
+            .fork-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .card-title {
+                font-size: 28px;
+            }
+
+            .card-body {
+                font-size: 16px;
+            }
+
+            .card-cta {
+                font-size: 14px;
+                padding: 12px 24px;
+                width: 100%;
+                justify-content: center;
+            }
+
+            .hero {
+                margin-bottom: 64px;
+            }
+
+            .page-wrapper {
+                padding: 64px 0;
+            }
+
+            .footer p {
+                font-size: 13px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .footer-bottom-left {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 24px;
+            }
+
+            .nav {
+                padding: 24px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero-sub {
+                font-size: 17px;
+            }
+
+            .hero-ctas {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .fork-card {
+                padding: 28px 24px 24px;
+            }
+
+            .card-perks li {
+                font-size: 14px;
+                padding: 6px 0;
+            }
+
+            .card-tag {
+                font-size: 11px;
+            }
+
+            .card-flavor {
+                font-size: 12px;
+            }
+
+            .escape {
+                margin-top: 64px;
+            }
+
+            .escape p {
+                font-size: 14px;
+            }
+
+            .escape a {
+                font-size: 14px;
+            }
+        }
+
+        /* ═══════════════════════ Live Stat ═══════════════════════ */
+        .live-stat {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 24px;
+            font-size: 14px;
+            color: var(--text-light);
+            opacity: 0;
+            transform: translateY(8px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .live-stat.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .live-stat .stat-number {
+            font-weight: 700;
+            font-size: 15px;
+            color: var(--pop);
+            font-variant-numeric: tabular-nums;
+        }
+    </style>
+<link rel="manifest" href="/manifest.webmanifest"></head>
+
+<body>
+
+    <!-- ═══════════════════════ Nav ═══════════════════════ -->
+    <nav class="nav" role="navigation">
+        <a href="https://voiceprompter.app" class="nav-logo"><img src="/logo-icon-no-bg.svg" alt="" width="28"
+                height="28" style="display:inline-block;vertical-align:middle;margin-right:8px;">VoicePrompter</a>
+    </nav>
+
+    <!-- ═══════════════════════ Page ═══════════════════════ -->
+    <div class="page-wrapper">
+        <div class="container">
+
+            <!-- Hero -->
+            <div class="hero fade-up">
+                <h1>The best teleprompter<br>for every use case</h1>
+                <p class="hero-sub">Effortless voice scrolling — in your browser or built right into your Mac.</p>
+
+                <div class="hero-ctas">
+                    <a href="/app/" class="escape-btn-web" data-umami-event="home-hero-open-app">Open the web app</a>
+                    <a href="https://apps.apple.com/app/apple-store/id6758573080?pt=128503212&ct=home-hero&mt=8"
+                        target="_blank" rel="noopener" class="escape-btn-mac" data-umami-event="home-hero-download-mac">
+                        <img src="/Download_on_the_Mac_App_Store_Badge_US-UK_RGB_wht_092917.svg"
+                            alt="Download on the Mac App Store">
+                    </a>
+                </div>
+
+                <div class="live-stat" id="live-stat">
+                    <span>Trusted by <span class="stat-number" id="stat-creators">—</span> creators and counting</span>
+                </div>
+            </div>
+
+            <!-- Fork Cards -->
+            <div class="fork-grid fade-up">
+
+                <!-- Web App Card -->
+                <div class="fork-card web">
+                    <span class="card-tag">Web App · 100% Free · Open Source</span>
+                    <h2 class="card-title">Web application<br><span class="card-subtitle">Web application</span></h2>
+                    <p class="card-body">No gates. No fees. No installation required.<br>Works on any device and follows
+                        your voice.</p>
+                    <ul class="card-perks">
+                        <li>Voice-activated scrolling</li>
+                        <li>Works offline as a PWA app</li>
+                        <li>Mirror mode for teleprompter glass</li>
+                        <li>34 languages, auto-detected</li>
+                        <li>Voice commands: back, forward, restart</li>
+                        <li>Built-in video recording</li>
+                        <li>Your scripts never leave your device</li>
+                    </ul>
+                    <a href="/web" class="card-cta" data-umami-event="home-cta-web-app">Learn more →</a>
+                    <p class="card-flavor">Free as in freedom</p>
+                </div>
+
+                <!-- Mac App Card -->
+                <div class="fork-card mac">
+                    <span class="card-tag">Native MacOS · $3.34/mo · Free to try</span>
+                    <h2 class="card-title">Native macOS application</h2>
+                    <p class="card-body">Invisible to others. On top of your slides.<br>In sync with every word you
+                        speak.
+                    </p>
+                    <ul class="card-perks">
+                        <li>Voice-activated scrolling</li>
+                        <li>Invisible on screen shares & recordings</li>
+                        <li>Stays on top of every app, even full-screen</li>
+                        <li>60+ languages via Apple speech recognition</li>
+                        <li>Lives in your menu bar, always ready</li>
+                        <li>Launches from clipboard in one click</li>
+                        <li>Private - everything on your device</li>
+                    </ul>
+                    <a href="/mac" class="card-cta" data-umami-event="home-cta-mac-app">Learn more →</a>
+                    <p class="card-flavor">Free to try · 3 scripts included</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════ Footer ═══════════════════════ -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Product</h4>
+                <a href="/web">Web App</a>
+                <a href="/mac">Mac App</a>
+            </div>
+            <div class="footer-col">
+                <h4>Resources</h4>
+                <a href="https://github.com/kosuvorov/VoicePrompter" target="_blank" rel="noopener">GitHub</a>
+                <a href="/blog">Blog</a>
+                <a href="https://www.youtube.com/@kosuvorov" target="_blank" rel="noopener">YouTube</a>
+            </div>
+            <div class="footer-col">
+                <h4>Help</h4>
+                <a href="mailto:konstantin@voiceprompter.app">Contact</a>
+                <a href="/terms">Terms of Service</a>
+                <a href="/privacy">Privacy Policy</a>
+            </div>
+            <div class="footer-col">
+                <h4>Support the project</h4>
+                <a href="https://buymeacoffee.com/kosuvorov" target="_blank" rel="noopener">Buy me a coffee ☕</a>
+                <a href="https://github.com/kosuvorov/VoicePrompter" target="_blank" rel="noopener">Give a star on
+                    GitHub ⭐</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-bottom-left">
+                <p>Made by <a href="https://instagram.com/kosuvorov" target="_blank" rel="noopener"
+                        style="color:var(--text-light);text-decoration:underline;text-underline-offset:2px;">Konstantin
+                        Suvorov</a> · © 2026 VoicePrompter</p>
+                <a href="https://startupfa.me/s/voiceprompter?utm_source=voiceprompter.app" target="_blank"
+                    rel="noopener" class="startup-fame-badge" data-umami-event="home-footer-startup-fame"
+                    style="margin-top:12px;">
+                    <img src="https://startupfa.me/badges/featured/dark.webp"
+                        alt="VoicePrompter - Featured on Startup Fame" width="171" height="54" />
+                </a>
+            </div>
+            <div class="footer-social">
+                <a href="https://www.instagram.com/voiceprompter" target="_blank" rel="noopener" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                    </svg>
+                </a>
+                <a href="https://www.tiktok.com/@voiceprompter" target="_blank" rel="noopener" aria-label="TikTok">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 0 0-.79-.05A6.34 6.34 0 0 0 3.15 15a6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.75a8.18 8.18 0 0 0 4.76 1.52V6.84a4.83 4.83 0 0 1-1-.15z" />
+                    </svg>
+                </a>
+                <a href="https://www.youtube.com/@kosuvorov" target="_blank" rel="noopener" aria-label="YouTube">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ═══════════════════════ Live Stats ═══════════════════════ -->
+    <script>
+        (function () {
+            const el = document.getElementById('stat-creators');
+            const container = document.getElementById('live-stat');
+            let currentValue = 0;
+            let animId = null;
+
+            function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+
+            function animateTo(from, to, duration) {
+                if (animId) cancelAnimationFrame(animId);
+                const startTime = performance.now();
+                function step(now) {
+                    const elapsed = now - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    currentValue = Math.round(from + (to - from) * easeOutCubic(progress));
+                    el.textContent = currentValue.toLocaleString() + '+';
+                    if (progress < 1) { animId = requestAnimationFrame(step); }
+                }
+                animId = requestAnimationFrame(step);
+            }
+
+            // Start with fallback immediately
+            container.classList.add('visible');
+            animateTo(0, 3900, 1800);
+
+            // Fetch real data and continue from wherever we are
+            fetch('https://umami-proxy.kosuvorov.workers.dev/')
+                .then(r => r.json())
+                .then(data => {
+                    let real = data.allTime && data.allTime.visitors;
+                    if (real) {
+                        real = Math.max(1000, Math.floor(real / 100) * 100);
+                        setTimeout(() => animateTo(currentValue, real, 1000), 200);
+                    }
+                })
+                .catch(() => { });
+        })();
+    </script>
+
+    <!-- Scroll Reveal -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12 });
+            document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+        });
+    </script>
+
+</body>
+
+</html>
