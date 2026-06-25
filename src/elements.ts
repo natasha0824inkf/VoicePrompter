@@ -34,6 +34,7 @@ export interface Elements {
     speechServiceWarningBody: HTMLElement;
     dismissSpeechServiceWarningBtn: HTMLElement;
     useOfflineModeBtn: HTMLElement;
+    useOfflineMultilingualBtn: HTMLElement;
     whisperLoadingModal: HTMLElement;
     whisperLoadingTitle: HTMLElement;
     whisperLoadingMsg: HTMLElement;
@@ -153,6 +154,7 @@ export function initElements(): void {
         speechServiceWarningBody: document.getElementById('speechServiceWarningBody')!,
         dismissSpeechServiceWarningBtn: document.getElementById('dismissSpeechServiceWarningBtn')!,
         useOfflineModeBtn: document.getElementById('useOfflineModeBtn')!,
+        useOfflineMultilingualBtn: document.getElementById('useOfflineMultilingualBtn')!,
         whisperLoadingModal: document.getElementById('whisperLoadingModal')!,
         whisperLoadingTitle: document.getElementById('whisperLoadingTitle')!,
         whisperLoadingMsg: document.getElementById('whisperLoadingMsg')!,

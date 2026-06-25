@@ -917,8 +917,7 @@ function handleWhisperStatus(s: WhisperStatus) {
     }
 }
 
-els.useOfflineModeBtn.addEventListener('click', async () => {
-    (window as any).umami?.track('offline-voice-start');
+async function startOfflineMode(variant: 'en' | 'multilingual') {
     cancelWhisperLoad = false;
     els.speechServiceWarning.classList.add('hidden');
     els.whisperLoadingModal.classList.remove('hidden');
@@ -928,7 +927,17 @@ els.useOfflineModeBtn.addEventListener('click', async () => {
         if (cancelWhisperLoad) return;
         handleWhisperStatus(s);
     });
-    await loadWhisperModel();
+    await loadWhisperModel(variant);
+}
+
+els.useOfflineModeBtn.addEventListener('click', () => {
+    (window as any).umami?.track('offline-voice-start', { variant: 'en' });
+    startOfflineMode('en');
+});
+
+els.useOfflineMultilingualBtn.addEventListener('click', () => {
+    (window as any).umami?.track('offline-voice-start', { variant: 'multilingual' });
+    startOfflineMode('multilingual');
 });
 
 els.cancelWhisperLoadBtn.addEventListener('click', () => {
