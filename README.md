@@ -45,7 +45,7 @@ Brave's privacy shields block the connection to Google's speech recognition serv
 All other features (manual scrolling, script history, video recording, settings) work normally in Brave without any changes.
 
 ### 💻 Intel Hardware
-Intel CPU/GPU does not affect voice recognition — that depends entirely on your browser and network. Video recording on Intel automatically falls back from MP4/H.264 to WebM if hardware encoding isn't available, so recording should still work. Voice not working on an Intel machine is a browser or network issue, not a hardware one.
+Intel CPU/GPU does not affect voice recognition: that depends entirely on your browser and network. Video recording on Intel automatically falls back from MP4/H.264 to WebM if hardware encoding isn't available, so recording should still work. Voice not working on an Intel machine is a browser or network issue, not a hardware one.
 
 ## 📥 Installing as a PWA (Progressive Web App)
 
