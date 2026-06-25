@@ -2,6 +2,7 @@ import { state } from './state';
 import { updateHighlight, scrollToCurrent, advancePastSkipped } from './render';
 
 let transcriber: any = null;
+let loadedModel: 'en' | 'multilingual' | null = null;
 let isRunning = false;
 let mediaStream: MediaStream | null = null;
 let mediaRecorder: MediaRecorder | null = null;
@@ -24,12 +25,19 @@ function emit(s: WhisperStatus) {
     statusCallback?.(s);
 }
 
-export async function loadWhisperModel(): Promise<boolean> {
-    if (transcriber) {
+export async function loadWhisperModel(variant: 'en' | 'multilingual' = 'en'): Promise<boolean> {
+    if (transcriber && loadedModel === variant) {
         emit({ type: 'ready' });
         return true;
     }
 
+    // Discard cached model if switching variant
+    if (transcriber && loadedModel !== variant) {
+        transcriber = null;
+        loadedModel = null;
+    }
+
+    const modelId = variant === 'multilingual' ? 'Xenova/whisper-tiny' : 'Xenova/whisper-tiny.en';
     emit({ type: 'loading', progress: 0, message: 'Preparing offline speech model...' });
 
     try {
@@ -39,7 +47,7 @@ export async function loadWhisperModel(): Promise<boolean> {
 
         transcriber = await pipeline(
             'automatic-speech-recognition',
-            'Xenova/whisper-tiny.en',
+            modelId,
             {
                 progress_callback: (p: any) => {
                     if (p.status === 'progress' && p.total) {
@@ -52,12 +60,14 @@ export async function loadWhisperModel(): Promise<boolean> {
             }
         );
 
+        loadedModel = variant;
         emit({ type: 'ready' });
         return true;
     } catch (err) {
         console.error('Whisper load error:', err);
         emit({ type: 'error', message: 'Failed to load offline model. Check your connection and try again.' });
         transcriber = null;
+        loadedModel = null;
         return false;
     }
 }
