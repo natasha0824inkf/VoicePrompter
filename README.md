@@ -195,6 +195,83 @@ Your scripts are automatically saved to your browser's local storage:
 - Install the PWA using the instructions above
 - Ensure you've opened the app at least once while online
 
+## 🚀 Deploying to Hostinger
+
+This section is for whoever manages the hosting. Read it fully before touching anything.
+
+### Prerequisites
+
+You need Node 18+ installed locally. Check with:
+
+```bash
+node -v
+npm -v
+```
+
+If either command fails, install Node from [nodejs.org](https://nodejs.org) (LTS version).
+
+### Step 1 - Build the project
+
+Clone the repo (or pull the latest changes), then run:
+
+```bash
+npm install
+npm run build
+```
+
+This generates a `dist/` folder. That folder is what gets deployed - nothing else.
+
+> If the build fails with a TypeScript error, run `npm install` again first. If it still fails, do not deploy whatever was there before and contact the repo owner.
+
+### Step 2 - Upload to Hostinger
+
+1. Log in to [hPanel](https://hpanel.hostinger.com)
+2. Go to **Hosting** - select your plan - **File Manager**
+3. Navigate into `public_html/`
+4. **Delete everything currently in `public_html/`** (old build)
+5. Open your local `dist/` folder
+6. Select all files and folders inside `dist/` and upload them
+
+**Common mistake:** uploading the `dist/` folder itself instead of its contents. If after uploading you see a `dist/` folder inside `public_html/`, you did it wrong - move everything up one level or delete and redo.
+
+The result should be that `public_html/index.html` exists directly (not `public_html/dist/index.html`).
+
+### Step 3 - DNS records
+
+Do this once when first setting up a custom domain. Skip if the domain already resolves correctly.
+
+In Hostinger hPanel, go to **Domains** - your domain - **DNS / Nameservers** - **DNS Records**.
+
+| Type | Name | Value | TTL |
+|------|------|-------|-----|
+| A | @ | *(your Hostinger IP)* | 3600 |
+| CNAME | www | @ | 3600 |
+
+Find your Hostinger IP in hPanel under **Hosting** - **Details** - the IP address listed there.
+
+> DNS changes take up to 24-48 hours to propagate globally, though usually under an hour. The site may appear broken or show an old version during this window - that is normal.
+
+### After every code change
+
+Any time someone updates the code, you need to rebuild and re-upload:
+
+```bash
+git pull
+npm install
+npm run build
+```
+
+Then repeat Step 2 (delete `public_html/` contents, upload new `dist/` contents).
+
+### Things that will break the site
+
+- Uploading without building first (raw source files do not work as a website)
+- Uploading the `dist/` folder as a folder instead of its contents
+- Editing files directly in Hostinger File Manager (edits will be overwritten on next deploy)
+- Deleting `public_html/` itself instead of its contents (Hostinger needs that folder to exist)
+
+---
+
 ## 🛠️ Technical Stack
 
 - **Framework:** Vite + TypeScript
